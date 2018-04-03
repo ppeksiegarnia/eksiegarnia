@@ -1,0 +1,1 @@
+insert into user_roles values(1,'Domyslna rola','DEFAULT_ROLE');
