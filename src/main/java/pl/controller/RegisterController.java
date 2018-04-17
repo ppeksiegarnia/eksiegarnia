@@ -37,11 +37,11 @@ public class RegisterController {
 
 
         userService.addWithDefaultRole(user);
-        return "redirect:succes";
+        return "redirect:success";
     }
 
 
-    @GetMapping("/succes")
+    @GetMapping("/success")
     public String add(Model model)
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

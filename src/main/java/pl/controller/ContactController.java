@@ -8,12 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class ContactController {
 
-    @GetMapping("/")
+    @GetMapping("/contact")
     public String home(Model model)
     {
         new CheckAuth(model);
-        return "index";
+        return "contact";
     }
 }
