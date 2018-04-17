@@ -30,7 +30,6 @@ public class Security  extends WebSecurityConfigurerAdapter{
                 authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/register").permitAll()
-                .antMatchers("/women").permitAll()
                 .antMatchers("/success").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("loginPage").permitAll()

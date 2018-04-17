@@ -18,16 +18,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			 <div class="price-details">
 				 <h3>Szczegóły</h3>
 				 <span>Suma</span>
-				 <span class="total1">6200.00</span>
+				 <span class="simpleCart_total">0.00 PLN</span>
 				 <span>Zniżka</span>
 				 <span class="total1">---</span>
 				 <span>Koszty dostawy</span>
-				 <span class="total1">150.00</span>
+				 <span class="shipping">150.00</span>
 				 <div class="clearfix"></div>				 
 			 </div>	
 			 <ul class="total_price">
 			   <li class="last_price"> <h4>SUMA</h4></li>	
-			   <li class="last_price"><span>6350.00</span></li>
+			   <li class="last_price_count"><span class="TotalDosh">0.00 PLN</span></li>
 			   <div class="clearfix"> </div>
 			 </ul>
 			
@@ -99,5 +99,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 </div>
 	 </div>
 <div th:replace="template :: footer"></div>
+
+<script>
+$(window).bind("load", function() {
+    var a = $(".simpleCart_total").text();
+    var str1 = a.replace ( /[^\d.]/g, '' );
+    
+    
+    var b = $(".shipping").text();
+    var str2 = b.replace ( /[^\d.]/g, '' );
+    
+    total = (parseFloat(str1) + parseFloat(str2)).toFixed(2);
+    
+    $(".TotalDosh").text(total);
+});
+</script>
 </body>
 </html>
