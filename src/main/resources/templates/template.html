@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="top_right">
 				<ul>
 					<li><a href="#">pomoc</a></li>|
-					<li><a href="contact.html">kontakt</a></li>|
+					<li><a th:href="@{/contact}">kontakt</a></li>|
 					<li><a href="#">informacje o dostawie</a></li>
 				</ul>
 			</div>
@@ -95,14 +95,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a th:href="@{/register}">ZAREJESTRUJ</a>
 				</div>
 			<div class="cart box_1">
-				<a href="checkout.html">
+				<a th:href="@{/checkout}">
 					<h3> <span class="simpleCart_total">0.00 PLN</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> artykułów)<img src="images/bag.png" alt=""></h3>
 				</a>	
 				<p><a href="javascript:;" class="simpleCart_empty">(pusty koszyk)</a></p>
 				<div class="clearfix"> </div>
 			</div>
 			<div class="create_btn">
-				<a href="checkout.html">SPRAWDŹ</a>
+				<a th:href="@{/checkout}">SPRAWDŹ</a>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -311,7 +311,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<h4>O NAS</h4>
 				<li><a href="#">Nasze Sklepy</a></li>
 				<li><a href="#">Kariera</a></li>
-				<li><a href="contact.html">Kontakt</a></li>
+				<li><a th:href="@{/contact}">Kontakt</a></li>
 		</div>
 		<div class="col-md-2 myac">
 			<h4>MOJE KONTO</h4>
@@ -325,7 +325,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h4>Nasz Sklep</h4>
 			</div>
 		 <div class="clearfix"> </div>
-				<li><i class="add"> </i>Nibylandia 120A</li>
+				<li><i class="add"> </i>Aleje Racławickie 14, 20-950 Lublin</li>
 				<li><i class="phone"> </i>123456789</li>
 				<li><a href="mailto:info@example.com"><i class="mail"> </i>eksiegarnia@ppe.com </a></li>
 
