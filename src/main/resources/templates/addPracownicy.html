@@ -12,16 +12,45 @@
 </head>
 <body>
 
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+<div class="row">
+<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
+<div class="col-xs-6 col-md-6 col-sm-6 col-lg-6"  style="margin-top: 30px; margin-bottom: 30px; border: 5px solid #cc99cc;; background-color: white; padding: 40px 15px 40px 15px">
+	<form th:action="@{/add}"  action="#" method="post" th:object="${pracownik}">
+	<h2 style="text-align: center; color: #919191; margin-bottom: 15px"> DODAWANIE NOWEGO PRACOWNIKA DO BAZY </h2>
+	<div class="form-group">
+		 <label for="exampleName"><b>Imię</b></label>
+   		 <input class="form-control" id="exampleName" type="text"  th:field="*{imie}" placeholder="Imie"/> <br/>
+   		 </div>
+   		 <div class="form-group">
+   		 <label for="examplesurname"><b>Nazwisko</b></label>
+    	<input type="text"  class="form-control" id="examplesurname" th:field="*{nazwisko}" placeholder="Nazwisko"/><br/>
+    	</div>
+    	<div class="form-group">
+    	 <label for="exampleData"><b>Data zatrudnienia</b></label>
+    	<input type="text"  class="form-control" id="exampleData"  th:field="*{data_zatrudnienia}" placeholder="Data zatrudnienia"/><br/>
+    	</div>
+    	<div class="form-group">
+    	 <label for="exampleDataZ"><b>Data zwolnienia</b></label>
+    	<input type="text"  class="form-control" id="exampleDataZ" th:field="*{data_zwolnienia}" placeholder="Data zwolnienia"/><br/>
+    	</div>
+    	<div class="form-group">
+    	 <label for="examplePesel"><b>Pesel</b></label>
+    	<input type="number"  class="form-control" id="examplePesel" th:field="*{pesel}" placeholder="Pesel"/><br/>
+    	</div>
+    	<div class="form-group">
+    	 <label for="exampleSalary"><b>Pensja</b></label>
+    	<input type="number"  class="form-control" id="exampleSalary" th:field="*{pensja}" placeholder="Pensja"/><br/>
+    	</div>
+    	<div class="text-right">
+    	<input class="btn btn-default" type="submit" value="Dodaj"/>
+    	</div>
 
-<form th:action="@{/add}"  action="#" method="post" th:object="${pracownik}">
-    <input type="text"  th:field="*{imie}" placeholder="imie"/> <br/>
-    <input type="text" th:field="*{nazwisko}" placeholder="nazwisko"/><br/>
-    <input type="text" th:field="*{data_zatrudnienia}" placeholder="data_zat"/><br/>
-    <input type="text" th:field="*{data_zwolnienia}" placeholder="data_zwol"/><br/>
-    <input type="number" th:field="*{pesel}" placeholder="pesel"/><br/>
-    <input type="number" th:field="*{pensja}" placeholder="pensja"/><br/>
-    <input type="submit" value="Wyslij"/>
-
-</form>
+	</form></div></div>
+	<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
+	</div>
+</div></div>
 </body>
 </html>

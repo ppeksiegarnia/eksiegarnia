@@ -29,7 +29,7 @@
                     <th>Cena Netto</th>
                     <th>Cena Brutto</th>
                     <th>Czy Ebook</th>
-                    <th> </th>
+                    <th> Zdjęcie </th>
                     <th> </th>
                 </tr>
             </thead>
@@ -46,7 +46,7 @@
                     <td th:text="*{cenaBrutto}"></td>
                     <td th:if="*{czyEbook}" th:text="Tak"></td>
                     <td th:unless="*{czyEbook}" th:text="Nie"></td>
-                    <td>Zdjęcie</td>
+                    <td></td>
                     <td> Dodaj/usun</td>
                     
 

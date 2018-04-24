@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/megamenu.js"></script>
+    <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+    <script src="js/menu_jquery.js"></script>
+    <script src="js/simpleCart.min.js"> </script>
 </head>
 <body>
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+<div class="row">
+<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
+<div class="col-xs-6 col-md-6 col-sm-6 col-lg-6"  style="margin-top: 30px; margin-bottom: 30px; border: 5px solid #cc99cc; background-color: white; padding: 40px 15px 40px 15px">
+	<form th:action="@{/addKlient}" method="post" action="#" th:object="${klient}">
+	<h2 style="text-align: center; color: #919191; margin-bottom: 15px"> DODAWANIE NOWEGO KLIENTA DO BAZY </h2>
+			<div class="form-group">
+				<label for="exampleCompany"><b>Firma</b></label>
+    			<input  class="form-control" type="text" th:field="*{Firma}" id="exampleCompan"placeholder="Firma"/> <br />
+    		</div>
+    		<div class="form-group">
+    			<label for="exampleRegon"><b>Regon</b></label>
+    			<input  class="form-control" type="text" th:field="*{Regon}" id="exampleRegon" placeholder="Regon"/><br />
+    		</div>
+    		<div class="form-group">
+    			<label for="exampleNIP"><b>NIP</b></label>
+    			<input  class="form-control" type="text" th:field="*{Nip}" id="exampleNIP" placeholder="Nip"/><br />
+    		</div>
+    		<div class="form-group">
+    			<label for="exampleName"><b>Imię</b></label>
+    			<input  class="form-control" type="text" th:field="*{Imie}" id="exampleName" placeholder="Imie"/><br />
+    		</div>
+    		<div class="form-group">
+    			<label for="examplesurname"><b>Imię</b></label>
+    			<input  class="form-control" type="text" th:field="*{Nazwisko}" id="examplesurname" placeholder="Nazwisko"/><br />
+    		</div>
+    		<div class="text-right">
+    			<input class="btn btn-default" type="submit" value="Dodaj"/>
+    		</div>
+	</form></div></div>
+	<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
+	</div>
+</div></div>
 
-<form th:action="@{/addKlient}" method="post" action="#" th:object="${klient}">
-    <input type="text" th:field="*{Firma}" placeholder="Firma"/> <br />
-    <input type="text" th:field="*{Regon}" placeholder="Regon"/><br />
-    <input type="text" th:field="*{Nip}" placeholder="Nip"/><br />
-    <input type="text" th:field="*{Imie}" placeholder="Imie"/><br />
-    <input type="text" th:field="*{Nazwisko}" placeholder="Nazwisko"/><br />
-    <input type="submit" th:value="Wyslij" />
 
-</form>
+
+	
 </body>
 </html>

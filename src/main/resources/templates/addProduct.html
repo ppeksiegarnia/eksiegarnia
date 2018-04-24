@@ -12,30 +12,95 @@
         </head>
         <body>
 
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+<div class="row">
+<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
+<div class="col-xs-6 col-md-6 col-sm-6 col-lg-6"  style="margin-top: 30px; margin-bottom: 30px; border: 5px solid #cc99cc; background-color: white; padding: 40px 15px 40px 15px">
 
-
-        <form th:action="@{/adProduct}"  action="#" method="post" th:object="${product}">
-            <input type="text"  th:field="*{wydawnictwo}" placeholder="wydawnictwo"/> <br/>
-            <input type="text" th:field="*{tytul}" placeholder="tytuł"/><br/>
-            <input type="text" th:field="*{ISBN}" placeholder="ISBN"/><br/>
-
-
-            <select th:field="*{kategoria}">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+        <form  id="registration_form" th:action="@{/adProduct}"  action="#" method="post" th:object="${product}" th:objects="${zdjecie}">
+            <h2 style="text-align: center; color: #919191; margin-bottom: 15px"> DODAWANIE NOWEGO PRODUKTU DO BAZY </h2>
+            <div class="form-group">
+            <label for="wydawnictwo"><b>Wydawnictwo</b></label>
+            <input class="form-control" type="text" id="wydawnictwo" th:field="*{wydawnictwo}" placeholder="Wydawnictwo"/> <br/>
+            </div>
+            <div class="form-group">
+            <label for="tytul"><b>Tytuł</b></label>
+            <input class="form-control" type="text" id="tytul" th:field="*{tytul}" placeholder="Tytuł"/><br/>
+            </div>
+            <div class="form-group">
+            <label for="isbn"> <b>ISBN</b></label>
+            <input class="form-control" type="text" id="ISBN" th:field="*{ISBN}" placeholder="ISBN"/><br/>
+			</div>
+			
+			<div class="form-group">
+            <select class="form-control" th:field="*{kategoria}">
+                <option value="biografie">Biografie</option>
+                <option value="biznesEkonomiaMarketing">Biznes, Ekonomia, Marketing</option>
+                <option value="dlaDzieci">Dla dzieci</option>
+                <option value="dlaMłodziezy">Dla młodzieży</option>
+                <option value="fantastyka">Fantastyka</option>
+                <option value="horror">Horror</option>
+                <option value="historia">Historia</option>
+                <option value="informatyka">Informatyka</option>
+                <option value="komiks">Komiks</option>
+                <option value="kryminalSensacjaThriller">Kryminał, Sensacja, Thriller</option>
+                <option value="ksiazkaRegionalna">Książka regionalna</option>
+                <option value="kuchniaIdiety">Kuchnia i diety</option>
+                <option value="lekturyPomoceSzkolne">Lektury, Pomoce szkolne</option>
+                <option value="LiteraturaFaktuReportaz">Literatura faktu, Reportaż</option>
+                <option value="literaturaObyczajowa">Literatura obyczajowa</option>
+                <option value="literaturaPieknaObca">Literatura piękna obca</option>
+                <option value="literaturaPieknaPolska">Literatura piękna polska</option>
+                <option value="naukaJezykow">Nauka języków</option>
+                <option value="naukiSpoleczneIHumanistyczne">Nauki społeczne i Humanistyczne</option>
+                <option value="naukiScisleMedycyna">Nauki ścisłe, Medycyna</option>
+                <option value="podrecznikiSzkolneEdukacja">Podręczniki szkolne, Edukacja</option>
+                <option value="poezjaAforyzmDramat">Poezja, Aforyzm, Dramat</option>
+                <option value="poradniki">Poradniki</option>
+                <option value="prawo">Prawo</option>
+                <option value="religieIWyznania">Religie i Wyznania</option>
+                <option value="rozwojOsobisty">Rozwój osobisty</option>
+                <option value="sportIWypoczynek">Sport i Wypoczynek</option>
+                <option value="sztuka">Sztuka</option>
+                <option value="Turystyka i Podróże">Turystyka i Podróże</option>
+                <option value="zdrowieRodzinaZwiązki">Zdrowie, Rodzina, Związki</option>
             </select>
-        <br />
-            <input type="number" th:field="*{iloscStron}" placeholder="ilosc Stron"/><br/>
-            <textarea  th:field="*{opis}" placeholder="opis"> </textarea> <br />
-            <input type="number" th:field="*{cenaNetto}" placeholder="cena N"/><br/>
-            <input type="number" th:field="*{cenaBrutto}" placeholder="cena B"/><br/>
-            <input type="checkbox" th:field="*{czyEbook}" /> Czy Ebook<br/>
-
-
-            <input type="submit" value="Wyslij"/>
+            </div>
+        	<div class="form-group">
+        	<label for="iloscStron"><b>Ilość stron</b></label>
+            <input  class="form-control"id="iloscStron" type="number" th:field="*{iloscStron}" placeholder="Ilosc Stron"/><br/>
+            </div>
+            <div class="form-group">
+            <label for="opis"><b>Opis</b></label>
+            <textarea  class="form-control" id="opis" th:field="*{opis}" placeholder="opis"> </textarea> <br />
+            </div>
+            <div class="form-group">
+            <label for="cenaNetto"><b>Cena Netto</b></label>
+            <input  class="form-control" id="cenaNetto" type="number" th:field="*{cenaNetto}" placeholder="Cena Netto"/><br/>
+            </div>
+            <div class="form-group">
+            <label for="cenaBrutto"><b>Cena Brutto</b></label>
+            <input  class="form-control" id="cenaBrutto" type="number" th:field="*{cenaBrutto}" placeholder="Cena Brutto"/><br/>
+            </div>
+            <div class="form-check">
+            <label class="form-check-label">
+   				 <input class="form-check-input" type="checkbox" value="">
+   				 <b>Ebook</b>
+   		    </label>
+			</div>
+            <div class="form-group">
+			<input class="form:input-large form-control"  id="image" type="file" />
+			</div>
+			<div class="text-right">
+            <input class="btn btn-default" type="submit" value="Dodaj"/>
+            </div>
 
         </form>
+        </div></div>
+    <div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
+    </div></div></div>
+        
 </body>
 </html>

@@ -13,11 +13,10 @@
 	</head>
 <body>
 <div th:fragment="menuadmin">
-<div class="logo">
-			<a th:href="@{/}"><img src="images/logo-rozowe-pianki-duze.jpg" width="180" class="img-responsive" alt=""/> </a>
-		</div>
 	<ul class="megamenu skyblue" >
-			
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}" class="grid">
+				<a class="color3" th:href="@{/}">Strona główna</a>
+			</li>
 			<li th:classappend="${#httpServletRequest.getRequestURI() == '/pracownicy' ? 'active':''}"  th:if="${admin=='admin'}" class="grid">
 				<a class="color1" th:href="@{/pracownicy}">Pracownicy</a>
 			</li>
