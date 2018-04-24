@@ -37,7 +37,8 @@ public class PracownicyController {
 
 		List<Pracownik> all=pracownicyRepository.findAll();
 		model.addAttribute("all",all);
-        return "pracownicy";
+		CheckAuth user = new CheckAuth(model);
+		return user.checkAdmin("pracownicy");
     }
 
     @GetMapping("/add")

@@ -31,7 +31,6 @@ public class KlienciController {
         List<Klient> all=klientRepository.findAll();
         model.addAttribute("all",all);
 
-		new CheckAuth(model);
         return "klienci";
     }
 
@@ -44,12 +43,10 @@ public class KlienciController {
     @PostMapping("/addKlient")
     public String addKlient(@ModelAttribute Klient klient,Model model)
     {
-    	
-    	System.err.println("ccccccc"+klient);
         klientRepository.save(klient);
         List<Klient> all=klientRepository.findAll();
         model.addAttribute("all",all);
-        model.addAttribute("succes","Dodano noweg Klienta");
+        model.addAttribute("succes","Dodano nowego Klienta");
         return "klienci";
     }
 

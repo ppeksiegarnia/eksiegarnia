@@ -14,7 +14,7 @@ public class AdminController {
 	@GetMapping("/admin")
 	public String register(Model model)
     {
-		new CheckAuth(model);
-        return "admin";
+		CheckAuth user = new CheckAuth(model);
+		return user.checkPracownik("admin");
     }
 }
