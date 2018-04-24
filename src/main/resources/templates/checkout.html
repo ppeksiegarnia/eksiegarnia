@@ -18,7 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			 <div class="price-details">
 				 <h3>Szczegóły</h3>
 				 <span>Suma</span>
-				 <span class="simpleCart_total">0.00 PLN</span>
+				 <div class = "chaching"><span class="simpleCart_total">0.00 PLN</span></div>
 				 <span>Zniżka</span>
 				 <span class="total1">---</span>
 				 <span>Koszty dostawy</span>
@@ -102,7 +102,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <script>
 $(window).bind("load", function() {
-    var a = $(".simpleCart_total").text();
+    var a = $(".chaching").text();
     var str1 = a.replace ( /[^\d.]/g, '' );
     
     

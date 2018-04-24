@@ -27,6 +27,7 @@ public class RegisterController {
     @GetMapping("/register")
     public String register(Model model)
     {
+    	new CheckAuth(model);
         model.addAttribute("users",new User());
         return "register";
     }
