@@ -16,6 +16,7 @@ public class ProduktyController {
 
 
     private ProduktyRepository produktyRepository;
+    CheckAuth user;
 
     @Autowired
     public void setProduktyRepository(ProduktyRepository produktyRepository) {
@@ -24,12 +25,12 @@ public class ProduktyController {
 
     @GetMapping("/produkty")
     public String register(Model model) {
-        new CheckAuth(model);
+    	user = new CheckAuth(model);
 
         List<Produkty> all = produktyRepository.findAll();
         model.addAttribute("all", all);
 
-        return "produkty";
+        return user.checkPracownik("produkty");
     }
 
 
@@ -37,17 +38,18 @@ public class ProduktyController {
     public String addProduct(Model model) {
 
         model.addAttribute("product",new Produkty());
-        return "addProduct";
+        return user.checkPracownik("addProduct");
     }
 
     @PostMapping("/adProduct")
     public String addProducts(@ModelAttribute Produkty produkty,Model model){
+    	user = new CheckAuth(model);
         System.out.println(produkty);
         produktyRepository.save(produkty);
         List<Produkty> all = produktyRepository.findAll();
         model.addAttribute("all", all);
         model.addAttribute("succes","Dodano nowy proukt");
-        return "produkty";
+        return user.checkPracownik("produkty");
 
     }
 

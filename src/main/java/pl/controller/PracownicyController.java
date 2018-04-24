@@ -21,7 +21,7 @@ import java.util.List;
 public class PracownicyController {
 
     private PracownicyRepository pracownicyRepository;
-
+    CheckAuth user;
 
     @Autowired
     public void setPracownicyRepository(PracownicyRepository pracownicyRepository) {
@@ -33,11 +33,10 @@ public class PracownicyController {
 	@GetMapping("/pracownicy")
 	public String register(Model model)
     {
-		new CheckAuth(model);
+		user = new CheckAuth(model);
 
 		List<Pracownik> all=pracownicyRepository.findAll();
 		model.addAttribute("all",all);
-		CheckAuth user = new CheckAuth(model);
 		return user.checkAdmin("pracownicy");
     }
 
@@ -47,16 +46,17 @@ public class PracownicyController {
         Pracownik pracownik=new Pracownik();
         model.addAttribute("pracownik",pracownik);
 
-        return "addPracownicy";
+        return user.checkAdmin("addPracownicy");
     }
 
     @PostMapping("/add")
     public String dodaj(@ModelAttribute Pracownik pracownik,Model model)
     {
+    	user = new CheckAuth(model);
         pracownicyRepository.save(pracownik);
         List<Pracownik> all=pracownicyRepository.findAll();
         model.addAttribute("all",all);
-        model.addAttribute("succes","Dodano nowego praocownika");
-        return "pracownicy";
+        model.addAttribute("succes","Dodano nowego pracownika");
+        return user.checkAdmin("pracownicy");
     }
 }

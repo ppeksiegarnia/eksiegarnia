@@ -9,26 +9,30 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 
 public class CheckAuth {
-	public CheckAuth(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        	String name = auth.getName();
-            model.addAttribute("user",name);
-	}
-	
-	public String checkAdmin(String strona) {
+	Model model;
+	public CheckAuth(Model pmodel) {
+		model = pmodel;
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Collection<? extends GrantedAuthority> all=auth.getAuthorities();
         GrantedAuthority admins=new SimpleGrantedAuthority("ADMIN_ROLE");
-		if(all.contains(admins)) return strona;
+        GrantedAuthority pracownik=new SimpleGrantedAuthority("WORKER_ROLE");
+        	String name = auth.getName();
+            model.addAttribute("user",name);
+            if(all.contains(admins))
+            {
+            	model.addAttribute("admin","admin");
+            }
+            if(all.contains(pracownik))
+            	model.addAttribute("worker","worker");
+	}
+	
+	public String checkAdmin(String strona) {
+		if(model.containsAttribute("admin")) return strona;
 		else return "error";
 	}
 	
 	public String checkPracownik(String strona) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Collection<? extends GrantedAuthority> all=auth.getAuthorities();
-        GrantedAuthority admins=new SimpleGrantedAuthority("ADMIN_ROLE");
-        GrantedAuthority WORKER=new SimpleGrantedAuthority("WORKER_ROLE");
-		if(all.contains(admins) || all.contains(WORKER)) return strona;
+		if(model.containsAttribute("admin")||model.containsAttribute("worker")) return strona;
 		else return "error";
 	}
 	

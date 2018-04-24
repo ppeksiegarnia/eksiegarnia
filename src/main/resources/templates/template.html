@@ -87,8 +87,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div th:if="${user}!='anonymousUser'">
 					<form th:action="@{logmeout}" method="post" action="#" >
 						<input type="submit" value="Wyloguj" />
-
 					</form>
+				</div>
+				
+				<div th:if="${admin=='admin'||worker=='worker'}">
+				    <div class="create_btn">
+						<a th:href="@{/admin}">Panel</a>
+					</div>
 				</div>
 
 				<div th:if="${user}=='anonymousUser'"   class="reg">

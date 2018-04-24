@@ -19,6 +19,7 @@ import java.util.List;
 public class KlienciController {
 
     private KlientRepository klientRepository;
+    CheckAuth user;
 
     @Autowired
     public void setKlientRepository(KlientRepository klientRepository) {
@@ -28,26 +29,28 @@ public class KlienciController {
     @GetMapping("/klienci")
 	public String register(Model model)
     {
+    	user = new CheckAuth(model);
         List<Klient> all=klientRepository.findAll();
         model.addAttribute("all",all);
 
-        return "klienci";
+        return user.checkPracownik("klienci");
     }
 
     @GetMapping("/klienciAdd")
     public String addKlienta(Model model)
     {
         model.addAttribute("klient",new Klient());
-        return "addKlient";
+        return user.checkPracownik("addKlient");
     }
     @PostMapping("/addKlient")
     public String addKlient(@ModelAttribute Klient klient,Model model)
     {
+    	user = new CheckAuth(model);
         klientRepository.save(klient);
         List<Klient> all=klientRepository.findAll();
         model.addAttribute("all",all);
         model.addAttribute("succes","Dodano nowego Klienta");
-        return "klienci";
+        return user.checkPracownik("klienci");
     }
 
 }
