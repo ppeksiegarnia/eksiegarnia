@@ -1,20 +1,55 @@
 package pl.controller;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import pl.model.Produkty;
+import pl.repository.ProduktyRepository;
 
-import pl.model.User;
+import java.util.List;
 
 @Controller
 public class ProduktyController {
 
-	@GetMapping("/produkty")
-	public String register(Model model)
-    {
-		new CheckAuth(model);
+
+    private ProduktyRepository produktyRepository;
+
+    @Autowired
+    public void setProduktyRepository(ProduktyRepository produktyRepository) {
+        this.produktyRepository = produktyRepository;
+    }
+
+    @GetMapping("/produkty")
+    public String register(Model model) {
+        new CheckAuth(model);
+
+        List<Produkty> all = produktyRepository.findAll();
+        model.addAttribute("all", all);
+
         return "produkty";
     }
+
+
+    @GetMapping("/addProduct")
+    public String addProduct(Model model) {
+
+        model.addAttribute("product",new Produkty());
+        return "addProduct";
+    }
+
+    @PostMapping("/adProduct")
+    public String addProducts(@ModelAttribute Produkty produkty,Model model){
+        System.out.println(produkty);
+        produktyRepository.save(produkty);
+        List<Produkty> all = produktyRepository.findAll();
+        model.addAttribute("all", all);
+        model.addAttribute("succes","Dodano nowy proukt");
+        return "produkty";
+
+    }
+
+
 }
