@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/megamenu.js"></script>
+        <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+        <script src="js/menu_jquery.js"></script>
+        <script src="js/simpleCart.min.js"> </script>
+        </head>
+        <body>
+
+
+
+        <form th:action="@{/adProduct}"  action="#" method="post" th:object="${product}">
+            <input type="text"  th:field="*{wydawnictwo}" placeholder="wydawnictwo"/> <br/>
+            <input type="text" th:field="*{tytul}" placeholder="tytuł"/><br/>
+            <input type="text" th:field="*{ISBN}" placeholder="ISBN"/><br/>
+
+
+            <select th:field="*{kategoria}">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+        <br />
+            <input type="number" th:field="*{iloscStron}" placeholder="ilosc Stron"/><br/>
+            <textarea  th:field="*{opis}" placeholder="opis"> </textarea> <br />
+            <input type="number" th:field="*{cenaNetto}" placeholder="cena N"/><br/>
+            <input type="number" th:field="*{cenaBrutto}" placeholder="cena B"/><br/>
+            <input type="checkbox" th:field="*{czyEbook}" /> Czy Ebook<br/>
+
+
+            <input type="submit" value="Wyslij"/>
+
+        </form>
+</body>
+</html>

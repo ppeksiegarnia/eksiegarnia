@@ -13,7 +13,7 @@
 <body>
 	
 <div th:replace="admin :: menuadmin"></div>
-
+<p class="text-danger" th:if="${succes}" th:text="${succes}" />
 <div class="table table-striped">
         <h2><center>Lista Klientów:</center></h2>
         <table class=" table table-striped table-bordered table-hover table-sm text-light" >  
@@ -25,15 +25,26 @@
                     <th>Nip</th>
                     <th>Imie</th>
                     <th>Nazwisko</th>
+                    <th></th>
                 </tr>
             </thead>
             
             <tbody>
-                
+                <tr th:each="n: ${all}" th:object="${n}">
+                    <td th:text="*{ID}">             </td>
+                    <td th:text="*{firma}"></td>
+                    <td th:text="*{regon}"></td>
+                    <td th:text="*{nip}"></td>
+                    <td th:text="*{imie}"></td>
+                    <td th:text="*{nazwisko}"></td>
+                    <td>Edytuj/Usun</td>
+
+
+                </tr>
                 
             </tbody>
         </table>
-        <a href="formularzKlient.html"><button class="btn btn-default">Dodaj Klienta</button></a>
+        <a th:href="@{/klienciAdd}"><button class="btn btn-default">Dodaj Klienta</button></a>
         </div>
 	
 	

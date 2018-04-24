@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="@{/addKlient}" method="post" action="#" th:object="${klient}">
+    <input type="text" th:field="*{Firma}" placeholder="Firma"/> <br />
+    <input type="text" th:field="*{Regon}" placeholder="Regon"/><br />
+    <input type="text" th:field="*{Nip}" placeholder="Nip"/><br />
+    <input type="text" th:field="*{Imie}" placeholder="Imie"/><br />
+    <input type="text" th:field="*{Nazwisko}" placeholder="Nazwisko"/><br />
+    <input type="submit" th:value="Wyslij" />
+
+</form>
+</body>
+</html>
