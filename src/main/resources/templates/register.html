@@ -7,6 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" >
 <head th:replace="template :: head">
+<script src="js/Pass.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
@@ -17,7 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- start registration -->
 	<div class="registration">
 		<div class="registration_left">
-		<h2>jesteś tu nowy? <span> stwórz swoje konto </span></h2>
+		<h2>Jesteś tu nowy? <span> Stwórz swoje konto </span></h2>
 		<!-- [if IE] 
 		    < link rel='stylesheet' type='text/css' href='ie.css'/>  
 		 [endif] -->  
@@ -92,26 +93,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 				<div>
 					<label>
-						<input placeholder="hasło" th:field="*{hasło}"  type="password" tabindex="4" required>
+						<input placeholder="hasło" id="password1" th:field="*{hasło}" type="password" tabindex="4" required>
 					</label>
 				</div>						
 				<div>
 					<label>
-						<input placeholder="powtórz hasło" th:field="*{hasło2}"  type="password" tabindex="4" required>
+						<input placeholder="powtórz hasło" id="confirm_password" type="password" tabindex="4" required >
 					</label>
 				</div>	
-				<div>
-					<input type="submit" value="stwórz konto" id="register-submit">
-				</div>
 				<div class="sky-form">
-					<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>zgadzam się z regulaminem rozowe-pianki.cba.pl &nbsp;<a class="terms" href="#"> Regulamin serwisu</a> </label>
+					<label class="checkbox"><input type="checkbox" name="checkbox" required='required' ><i></i>zgadzam się z regulaminem rozowe-pianki.cba.pl &nbsp;<a class="terms" href="#"> Regulamin serwisu</a> </label>
 				</div>
+				<div>
+					<input type="submit" value="stwórz konto" id="register-submit" onclick="myFunction()">
+				</div>
+				
 			</form>
 			<!-- /Form -->
 		</div>
 	</div>
 	<div class="registration_left">
-		<h2>Msm już konto</h2>
+		<h2>Mam już konto</h2>
 		 <div class="registration_form">
 		 <!-- Form -->
 			<form id="registration_form" th:action="@{/processinglogin}" method="post">
@@ -141,5 +143,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 </div>
 <div th:replace="template :: footer"></div>
+<script>
+var password = document.getElementById("password1");
+var confirm_password = document.getElementById("confirm_password");
+  
+function myFunction(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Hasła nie sa takie same");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+</script>
 </body>
 </html>

@@ -43,6 +43,7 @@ public class PracownicyController {
     @GetMapping("/add")
     public String add(Model model)
     {
+    	user = new CheckAuth(model);
         Pracownik pracownik=new Pracownik();
         model.addAttribute("pracownik",pracownik);
 
