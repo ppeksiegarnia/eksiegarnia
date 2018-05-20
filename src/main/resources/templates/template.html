@@ -112,8 +112,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="clearfix"> </div>
 		</div>
 		<div class="search">
-		    <form>
-		    	<input type="text" value="" placeholder="Wyszukaj...">
+		    <form method="get" action="#" th:action="@{/search}">
+		    	<input type="text" name="word" value="" placeholder="Wyszukaj...">
 				<input type="submit" value="">
 			</form>
 		</div>
@@ -124,18 +124,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- start header menu -->
 <ul class="megamenu skyblue">
 			<li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}" class="grid"><a class="color1" th:href="@{/}">Strona główna</a></li>
-			<li th:classappend="${#httpServletRequest.getRequestURI() == '/books' ? 'active':''}" class="grid"><a class="color2" th:href="@{/books}">Książka</a>
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/books' ? 'active':''}" class="grid"><a class="color2" th:href="@{/books?word=ksiazki}">Książka</a>
 				<div class="megapanel">
 					<div class="row">
 						<div class="col1">
 							<div class="h_nav">
 								<h4>Kategoria</h4>
 								<ul>
-									<li><a th:href="@{/books}">Biografie</a></li>
-									<li><a th:href="@{/books}">Biznes, ekonomia, marketing</a></li>
-									<li><a th:href="@{/books}">Dla dzieci</a></li>
-									<li><a th:href="@{/books}">Dla młodzieży</a></li>
-									<li><a th:href="@{/books}">Fantastyka</a></li>
+									<li><a th:href="@{/books?word=Biografie}">Biografie</a></li>
+									<li><a th:href="@{/books?word=Biznes, ekonomia, marketing}">Biznes, ekonomia, marketing</a></li>
+									<li><a th:href="@{/books?word=Dla dzieci}">Dla dzieci</a></li>
+									<li><a th:href="@{/books?word=Dla młodzieży}">Dla młodzieży</a></li>
+									<li><a th:href="@{/books?word=Fantastyka}">Fantastyka</a></li>
 								</ul>	
 							</div>							
 						</div>
@@ -143,12 +143,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="h_nav">
 								
 								<ul>
-									<li><a th:href="@{/books}">Horror</a></li>
-									<li><a th:href="@{/books}">Historia</a></li>
-									<li><a th:href="@{/books}">Informatyka</a></li>
-									<li><a th:href="@{/books}">Komiks</a></li>
-									<li><a th:href="@{/books}">Kryminał, sensacja, thriller</a></li>
-									<li><a th:href="@{/books}">Książka regionalna</a></li>
+									<li><a th:href="@{/books?word=Horror}">Horror</a></li>
+									<li><a th:href="@{/books?word=Historia}">Historia</a></li>
+									<li><a th:href="@{/books?word=Informatyka}">Informatyka</a></li>
+									<li><a th:href="@{/books?word=Komiks}">Komiks</a></li>
+									<li><a th:href="@{/books?word=Kryminał, sensacja, thriller}">Kryminał, sensacja, thriller</a></li>
+									<li><a th:href="@{/books?word=Książka regionalna}">Książka regionalna</a></li>
 								</ul>	
 							</div>							
 						</div>
@@ -156,12 +156,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="h_nav">
 								
 								<ul>
-									<li><a th:href="@{/books}">Kuchnia i diety</a></li>
-									<li><a th:href="@{/books}">Lektury, pomoce szkolne</a></li>
-									<li><a th:href="@{/books}">Literatura faktu, reportaż</a></li>
-									<li><a th:href="@{/books}">Literatura obyczajowa</a></li>
-									<li><a th:href="@{/books}">Literatura piękna obca</a></li>
-									<li><a th:href="@{/books}">Literatura piękna polska</a></li>
+									<li><a th:href="@{/books?word=Kuchnia i diety}">Kuchnia i diety</a></li>
+									<li><a th:href="@{/books?word=Lektury, pomoce szkolne}">Lektury, pomoce szkolne</a></li>
+									<li><a th:href="@{/books?word=Literatura faktu, reportaż}">Literatura faktu, reportaż</a></li>
+									<li><a th:href="@{/books?word=Literatura obyczajowa}">Literatura obyczajowa</a></li>
+									<li><a th:href="@{/books?word=Literatura piękna obca}">Literatura piękna obca</a></li>
+									<li><a th:href="@{/books?word=Literatura piękna polska}">Literatura piękna polska</a></li>
 								</ul>	
 							</div>												
 						</div>
@@ -169,12 +169,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="h_nav">
 								
 								<ul>
-									<li><a th:href="@{/books}">Nauka języków</a></li>
-									<li><a th:href="@{/books}">Nauki społeczne i humanistyczne</a></li>
-									<li><a th:href="@{/books}">Nauki ścisłe, medycyna</a></li>
-									<li><a th:href="@{/books}">Podręczniki szkolne, edukacja</a></li>
-									<li><a th:href="@{/books}">Poezja, aforyzm, dramat</a></li>
-									<li><a th:href="@{/books}">Poradniki</a></li>
+									<li><a th:href="@{/books?word=Nauka języków}">Nauka języków</a></li>
+									<li><a th:href="@{/books?word=Nauki społeczne i humanistyczne}">Nauki społeczne i humanistyczne</a></li>
+									<li><a th:href="@{/books?word=Nauki ścisłe, medycyna}">Nauki ścisłe, medycyna</a></li>
+									<li><a th:href="@{/books?word=Podręczniki szkolne, edukacja}">Podręczniki szkolne, edukacja</a></li>
+									<li><a th:href="@{/books?word=Poezja, aforyzm, dramat}">Poezja, aforyzm, dramat</a></li>
+									<li><a th:href="@{/books?word=Poradniki}">Poradniki</a></li>
 								</ul>	
 							</div>						
 						</div>
@@ -182,12 +182,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="h_nav">
 								
 								<ul>
-									<li><a th:href="@{/books}">Prawo</a></li>
-									<li><a th:href="@{/books}">Religie i wyznania</a></li>
-									<li><a th:href="@{/books}">Rozwój osobisty</a></li>
-									<li><a th:href="@{/books}">Sport i wypoczynek</a></li>
-									<li><a th:href="@{/books}">Sztuka</a></li>
-									<li><a th:href="@{/books}">Turystyka i podróże</a></li>
+									<li><a th:href="@{/books?word=Prawo}">Prawo</a></li>
+									<li><a th:href="@{/books?word=Religie i wyznania}">Religie i wyznania</a></li>
+									<li><a th:href="@{/books?word=Rozwój osobisty}">Rozwój osobisty</a></li>
+									<li><a th:href="@{/books?word=Sport i wypoczynek}">Sport i wypoczynek</a></li>
+									<li><a th:href="@{/books?word=Sztuka}">Sztuka</a></li>
+									<li><a th:href="@{/books?word=Turystyka i podróże}">Turystyka i podróże</a></li>
 								</ul>	
 							</div>
 						</div>
@@ -195,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="h_nav">
 								
 								<ul>
-									<li><a th:href="@{/books}">Zdrowie, Rodzina, Związki</a></li>
+									<li><a th:href="@{/books?word=Zdrowie, Rodzina, Związki}">Zdrowie, Rodzina, Związki</a></li>
 								</ul>	
 							</div>
 						</div>
@@ -209,79 +209,79 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
     				</div>
 				</li>
-			<li th:classappend="${#httpServletRequest.getRequestURI() == '/ebooks' ? 'active':''}" class="grid"><a class="color4" th:href="@{/ebooks}">E-book</a>
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/ebooks' ? 'active':''}" class="grid"><a class="color4" th:href="@{/ebooks?word=Wszystkie}">E-book</a>
 				<div class="megapanel">
 					<div class="row">
 						<div class="col1">
 							<div class="h_nav">
 								<h4>Kategoria</h4>
 								<ul>
-									<li><a th:href="@{/ebooks}">audiobooki</a></li>
-									<li><a th:href="@{/ebooks}">biografie</a></li>
-									<li><a th:href="@{/ebooks}">biznes, ekonomia, marketing</a></li>
-									<li><a th:href="@{/ebooks}">dla dzieci</a></li>
-									<li><a th:href="@{/ebooks}">dla młodzieży</a></li>
-									<li><a th:href="@{/ebooks}">fantastyka</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-																<ul>
-									<li><a th:href="@{/ebooks}">horror</a></li>
-									<li><a th:href="@{/ebooks}">historia</a></li>
-									<li><a th:href="@{/ebooks}">informatyka</a></li>
-									<li><a th:href="@{/ebooks}">komiks</a></li>
-									<li><a th:href="@{/ebooks}">kryminał, sensacja, thriller</a></li>
-									<li><a th:href="@{/ebooks}">książka regionalna</a></li>
-								</ul>	
-							</div>							
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								
-								<ul>
-									<li><a th:href="@{/ebooks}">kuchnia i diety</a></li>
-									<li><a th:href="@{/ebooks}">lektury, pomoce szkolne</a></li>
-									<li><a th:href="@{/ebooks}">literatura faktu, reportaż</a></li>
-									<li><a th:href="@{/ebooks}">literatura obyczajowa</a></li>
-									<li><a th:href="@{/ebooks}">literatura piękna obca</a></li>
-									<li><a th:href="@{/ebooks}">literatura piękna polska</a></li>
-								</ul>	
-							</div>												
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								
-								<ul>
-									<li><a href="#">nauka języków</a></li>
-									<li><a href="register.html">nauki społeczne i humanistyczne</a></li>
-									<li><a th:href="@{/ebooks}">nauki ścisłe, medycyna</a></li>
-									<li><a th:href="@{/ebooks}">podręczniki szkolne, edukacja</a></li>
-									<li><a th:href="@{/ebooks}">poezja, aforyzm, dramat</a></li>
-									<li><a th:href="@{/ebooks}">poradniki</a></li>
-								</ul>	
-							</div>						
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								
-								<ul>
-									<li><a th:href="@{/ebooks}">prawo</a></li>
-									<li><a th:href="@{/ebooks}">religie i wyznania</a></li>
-									<li><a th:href="@{/ebooks}">rozwój osobisty</a></li>
-									<li><a th:href="@{/ebooks}">sport i wypoczynek</a></li>
-									<li><a th:href="@{/ebooks}">sztuka</a></li>
-									<li><a th:href="@{/ebooks}">turystyka i podróże</a></li>
-								</ul>	
+									<li><a th:href="@{/ebooks?word=Biografie}">Biografie</a></li>
+									<li><a th:href="@{/ebooks?word=Biznes, ekonomia, marketing}">Biznes, ekonomia, marketing</a></li>
+									<li><a th:href="@{/ebooks?word=Dla dzieci}">Dla dzieci</a></li>
+									<li><a th:href="@{/ebooks?word=Dla młodzieży}">Dla młodzieży</a></li>
+									<li><a th:href="@{/ebooks?word=Fantastyka}">Fantastyka</a></li>
+								</ul>
 							</div>
 						</div>
 						<div class="col1">
 							<div class="h_nav">
-								
+
 								<ul>
-									<li><a th:href="@{/ebooks}">zdrowie, rodzina, związki</a></li>
-								</ul>	
+									<li><a th:href="@{/ebooks?word=Horror}">Horror</a></li>
+									<li><a th:href="@{/ebooks?word=Historia}">Historia</a></li>
+									<li><a th:href="@{/ebooks?word=Informatyka}">Informatyka</a></li>
+									<li><a th:href="@{/ebooks?word=Komiks}">Komiks</a></li>
+									<li><a th:href="@{/ebooks?word=Kryminał, sensacja, thriller}">Kryminał, sensacja, thriller</a></li>
+									<li><a th:href="@{/ebooks?word=Książka regionalna}">Książka regionalna</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col1">
+							<div class="h_nav">
+
+								<ul>
+									<li><a th:href="@{/ebooks?word=Kuchnia i diety}">Kuchnia i diety</a></li>
+									<li><a th:href="@{/ebooks?word=Lektury, pomoce szkolne}">Lektury, pomoce szkolne</a></li>
+									<li><a th:href="@{/ebooks?word=Literatura faktu, reportaż}">Literatura faktu, reportaż</a></li>
+									<li><a th:href="@{/ebooks?word=Literatura obyczajowa}">Literatura obyczajowa</a></li>
+									<li><a th:href="@{/ebooks?word=Literatura piękna obca}">Literatura piękna obca</a></li>
+									<li><a th:href="@{/ebooks?word=Literatura piękna polska}">Literatura piękna polska</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col1">
+							<div class="h_nav">
+
+								<ul>
+									<li><a th:href="@{/ebooks?word=Nauka języków}">Nauka języków</a></li>
+									<li><a th:href="@{/ebooks?word=Nauki społeczne i humanistyczne}">Nauki społeczne i humanistyczne</a></li>
+									<li><a th:href="@{/ebooks?word=Nauki ścisłe, medycyna}">Nauki ścisłe, medycyna</a></li>
+									<li><a th:href="@{/ebooks?word=Podręczniki szkolne, edukacja}">Podręczniki szkolne, edukacja</a></li>
+									<li><a th:href="@{/ebooks?word=Poezja, aforyzm, dramat}">Poezja, aforyzm, dramat</a></li>
+									<li><a th:href="@{/ebooks?word=Poradniki}">Poradniki</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col1">
+							<div class="h_nav">
+
+								<ul>
+									<li><a th:href="@{/ebooks?word=Prawo}">Prawo</a></li>
+									<li><a th:href="@{/ebooks?word=Religie i wyznania}">Religie i wyznania</a></li>
+									<li><a th:href="@{/ebooks?word=Rozwój osobisty}">Rozwój osobisty</a></li>
+									<li><a th:href="@{/ebooks?word=Sport i wypoczynek}">Sport i wypoczynek</a></li>
+									<li><a th:href="@{/ebooks?word=Sztuka}">Sztuka</a></li>
+									<li><a th:href="@{/ebooks?word=Turystyka i podróże}">Turystyka i podróże</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col1">
+							<div class="h_nav">
+
+								<ul>
+									<li><a th:href="@{/ebooks?word=Zdrowie, Rodzina, Związki}">Zdrowie, Rodzina, Związki</a></li>
+								</ul>
 							</div>
 						</div>
 					</div>
@@ -292,7 +292,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="col1"></div>
 						<div class="col1"></div>
 					</div>
-    				</div>
+				</div>
 				</li>				
 				
 				
@@ -300,6 +300,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 </div>
 </div>
+
+
+
 </div>
 
 <div th:fragment="footer">

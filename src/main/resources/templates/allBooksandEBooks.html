@@ -1,0 +1,51 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="template :: head">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div th:replace="template :: header"></div>
+<!-- content -->
+<div class="container">
+    <div class="women_main">
+        <!-- start sidebar -->
+
+        <!-- start content -->
+        <div class="col-md-12 w_content">
+            <div class="grids_of_4">
+                <div  th:each="p: ${products}" class="grid1_of_5" th:object="${p}">
+                    <div class="content_box"><a th:href="@{/details(ID=*{ID})}">
+                        <img th:unless="*{zdjecia.isEmpty()}" th:src="*{zdjecia.get(0).getAdres()}"  class="img-responsive-product" alt=""/>
+                        <img th:if="*{zdjecia.isEmpty()}" class="img-responsive-product"  src="/images/brak.jpg"  />
+                    </a>
+                        <h4><a th:href="@{/details}" th:text="*{tytul}" > Duis autem</a></h4>
+                        <p th:text="*{opis}">Wspaniały krótki opis produktu</p>
+                        <div class="grid_1 simpleCart_shelfItem">
+
+                            <div class="item_add"><span class="item_price" th:text="*{cenaBrutto}" ><h6>Tylko 109.00 zł</h6></span></div>
+                            <div class="item_add"><span class="item_price"><a href="#">dodaj do koszyka</a></span></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="clearfix"></div>
+            <h2  class="text-center"><a th:each="i: ${ile}" th:text="${i}+1" th:href="@{/search(word=${word},page=${i})}"></a>
+            </h2>
+
+        </div>
+        <!-- end content -->
+    </div>
+</div>
+<div th:replace="template :: footer"></div>
+
+</body>
+</html>
