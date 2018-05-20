@@ -36,7 +36,7 @@ public class UserImpelment implements UserDetailsService {
        User user=userRepository.findFirstByEmail(s);
         org.springframework.security.core.userdetails.User u=new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
-                passwordEncoder.encode(user.getHasło()),
+                passwordEncoder.encode(user.getHaslo()),
                 convert(user.getUserRolesSet())
 
         );

@@ -3,10 +3,9 @@ package pl.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -25,6 +24,10 @@ public class Produkty {
     private double cenaNetto;
     private double cenaBrutto;
     private boolean czyEbook;
+	@OneToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+	private List<Zdjecia> zdjecia=new ArrayList<>();
+
+
 	public Long getID() {
 		return ID;
 	}
@@ -85,6 +88,15 @@ public class Produkty {
 	public void setCzyEbook(boolean czyEbook) {
 		this.czyEbook = czyEbook;
 	}
+
+	public List<Zdjecia> getZdjecia() {
+		return zdjecia;
+	}
+
+	public void setZdjecia(List<Zdjecia> zdjecia) {
+		this.zdjecia = zdjecia;
+	}
+
 	@Override
 	public String toString() {
 		return "Produkty [ID=" + ID + ", wydawnictwo=" + wydawnictwo + ", tytul=" + tytul + ", ISBN=" + ISBN

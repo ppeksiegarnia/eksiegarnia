@@ -18,24 +18,23 @@ public class User {
     private String nazwisko;
     private String email;
     private String plec;
-    private String hasło;
-    private String hasło2;
+    private String haslo;
+    private String haslo2;
 
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private Set<UserRoles> userRolesSet=new HashSet<>();
 
-
-    public User() {
-    }
-
-    public User(String imie, String nazwisko, String email, String plec, String hasło, String hasło2, Set<UserRoles> userRolesSet) {
+    public User(String imie, String nazwisko, String email, String plec, String haslo, String haslo2, Set<UserRoles> userRolesSet) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.email = email;
         this.plec = plec;
-        this.hasło = hasło;
-        this.hasło2 = hasło2;
+        this.haslo = haslo;
+        this.haslo2 = haslo2;
         this.userRolesSet = userRolesSet;
+    }
+
+    public User() {
     }
 
     public Long getID() {
@@ -78,20 +77,20 @@ public class User {
         this.plec = plec;
     }
 
-    public String getHasło() {
-        return hasło;
+    public String getHaslo() {
+        return haslo;
     }
 
-    public void setHasło(String hasło) {
-        this.hasło = hasło;
+    public void setHaslo(String haslo) {
+        this.haslo = haslo;
     }
 
-    public String getHasło2() {
-        return hasło2;
+    public String getHaslo2() {
+        return haslo2;
     }
 
-    public void setHasło2(String hasło2) {
-        this.hasło2 = hasło2;
+    public void setHaslo2(String haslo2) {
+        this.haslo2 = haslo2;
     }
 
     public Set<UserRoles> getUserRolesSet() {
