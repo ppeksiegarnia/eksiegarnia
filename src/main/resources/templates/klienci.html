@@ -20,11 +20,10 @@
             <thead class="thead-dark text-light text-center">
                 <tr>                    
                     <th>Id Klienta</th>
-                    <th>Firma</th>
-                    <th>Regon</th>
-                    <th>Nip</th>
                     <th>Imie</th>
                     <th>Nazwisko</th>
+                    <th>E-mail</th>
+                    <th>Płeć</th>
                     <th></th>
                 </tr>
             </thead>
@@ -32,11 +31,10 @@
             <tbody>
                 <tr th:each="n: ${all}" th:object="${n}">
                     <td th:text="*{ID}">             </td>
-                    <td th:text="*{firma}"></td>
-                    <td th:text="*{regon}"></td>
-                    <td th:text="*{nip}"></td>
                     <td th:text="*{imie}"></td>
                     <td th:text="*{nazwisko}"></td>
+                    <td th:text="*{email}"></td>
+                    <td th:text="*{plec}"></td>
                     <td>Edytuj/Usun</td>
 
 

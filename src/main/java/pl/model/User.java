@@ -7,7 +7,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Data
+@Table(name = "user")
+@Inheritance(
+    strategy = InheritanceType.JOINED
+)
 public class User {
 
     @Id
@@ -19,18 +22,16 @@ public class User {
     private String email;
     private String plec;
     private String haslo;
-    private String haslo2;
 
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private Set<UserRoles> userRolesSet=new HashSet<>();
 
-    public User(String imie, String nazwisko, String email, String plec, String haslo, String haslo2, Set<UserRoles> userRolesSet) {
+    public User(String imie, String nazwisko, String email, String plec, String haslo, Set<UserRoles> userRolesSet) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.email = email;
         this.plec = plec;
         this.haslo = haslo;
-        this.haslo2 = haslo2;
         this.userRolesSet = userRolesSet;
     }
 
@@ -83,14 +84,6 @@ public class User {
 
     public void setHaslo(String haslo) {
         this.haslo = haslo;
-    }
-
-    public String getHaslo2() {
-        return haslo2;
-    }
-
-    public void setHaslo2(String haslo2) {
-        this.haslo2 = haslo2;
     }
 
     public Set<UserRoles> getUserRolesSet() {

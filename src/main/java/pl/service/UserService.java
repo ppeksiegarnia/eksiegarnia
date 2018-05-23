@@ -27,5 +27,11 @@ public class UserService {
         user.getUserRolesSet().add(userRoless);
         userRepository.save(user);
     }
+    
+    public void addWithWorkerRole(User user){
+        UserRoles userRoless=userRolesRepository.findFirstByRole("WORKER_ROLE");
+        user.getUserRolesSet().add(userRoless);
+        userRepository.save(user);
+    }
 
 }

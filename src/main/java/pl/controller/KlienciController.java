@@ -12,25 +12,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.model.Klient;
 import pl.model.User;
 import pl.repository.KlientRepository;
+import pl.repository.UserRepository;
 
 import java.util.List;
 
 @Controller
 public class KlienciController {
 
-    private KlientRepository klientRepository;
+    private UserRepository userRepository;
     CheckAuth user;
 
     @Autowired
-    public void setKlientRepository(KlientRepository klientRepository) {
-        this.klientRepository = klientRepository;
+    public void setKlientRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/klienci")
 	public String register(Model model)
     {
     	user = new CheckAuth(model);
-        List<Klient> all=klientRepository.findAll();
+    	List<User> all=userRepository.findAllUsers();
         model.addAttribute("all",all);
 
         return user.checkPracownik("klienci");
@@ -43,11 +44,11 @@ public class KlienciController {
         return user.checkPracownik("addKlient");
     }
     @PostMapping("/addKlient")
-    public String addKlient(@ModelAttribute Klient klient,Model model)
+    public String addKlient(@ModelAttribute User klient,Model model)
     {
     	user = new CheckAuth(model);
-        klientRepository.save(klient);
-        List<Klient> all=klientRepository.findAll();
+    	userRepository.save(klient);
+        List<User> all=userRepository.findAllUsers();
         model.addAttribute("all",all);
         model.addAttribute("succes","Dodano nowego Klienta");
         return user.checkPracownik("klienci");
