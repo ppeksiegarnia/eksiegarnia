@@ -55,51 +55,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="women_main">
 	<!-- start content -->
 			<div class="row single">
-				<div class="col-md-9 det">
+				<div th:object="${produkt}" class="col-md-9 det">
 				  <div class="single_left">
 					<div class="grid images_3_of_2">
 						<ul id="etalage">
-							<li>
+
+							<li  th:each="z : *{zdjecia}">
 								<a href="optionallink.html">
-									<img class="etalage_thumb_image img-responsive" src="images/d1.jpg"/>
-									<img class="etalage_source_image img-responsive" src="images/d1.jpg" title="" />
+									<img class="etalage_thumb_image img-responsive" th:src="${z.getAdres()}"/>
+									<img class="etalage_source_image img-responsive" th:src="${z.getAdres()}" title="" />
 								</a>
 							</li>
-							
-							<li>
-								<a href="optionallink.html">
-									<img class="etalage_thumb_image img-responsive" src="images/d2.jpg"/>
-									<img class="etalage_source_image img-responsive" src="images/d2.jpg" title="" />
-								</a>
-							</li>
-							
-							<li>
-								<a href="optionallink.html">
-									<img class="etalage_thumb_image img-responsive" src="images/d3.jpg"/>
-									<img class="etalage_source_image img-responsive" src="images/d3.jpg" title="" />
-								</a>
-							</li>
-							
-							<li>
-								<a href="optionallink.html">
-									<img class="etalage_thumb_image img-responsive" src="images/d4.jpg"/>
-									<img class="etalage_source_image img-responsive" src="images/d4.jpg" title="" />
-								</a>
-							</li>
-							
+
+
 						</ul>
 						 <div class="clearfix"></div>		
 				  </div>
 				  <div class="desc1 span_3_of_2">
-					<h3>Istoty Ciemności</h3>
-					<span class="brand">Wydawnictwo: <a href="#">PWN</a></span>
+					<h2 th:text="*{tytul}">Istoty Ciemności</h2>
+					<span class="brand" th:text="*{wydawnictwo}">Wydawnictwo: <a href="#">PWN</a></span>
 					<br>
-					<span class="code">Kod produktu: f-ic-m-11</span>
-					<p>Sie pojawiła istotka i była ciemna, hehe koniec xd</p>
+					<span class="code" th:text="*{ISBN}">Kod produktu: f-ic-m-11</span>
+					<p th:text="*{opis}">Sie pojawiła istotka i była ciemna, hehe koniec xd</p>
 						<div class="price">
-							<span class="text">Cena:</span>
-							<span class="price-new">30.50zł</span><span class="price-old">40.00zł</span>
+							<span  class="text">Cena:</span>
+							<span  th:text="*{cenaBrutto}" class="price-new">30.50zł</span>
 						</div>
+					  <p th:if="*{czyEbook}" th:text="Ebook" />
+					  <p th:unless="*{czyEbook}" th:text="Ksiazka" />
+
 					<div class="det_nav1">
 						<h4>Okładka: </h4>
 							<div class=" sky-form col col-4">
@@ -117,129 +101,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			   	 </div>
           	    <div class="clearfix"></div>
           	   </div>
-          	    <div class="single-bottom1">
-					<h6>Details</h6>
-					<p class="prod-desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option</p>
-				</div>
-				<div class="single-bottom2">
-					<h6>Related Products</h6>
-						<div class="product">
-						   <div class="product-desc">
-								<div class="product-img">
-		                           <img src="images/w8.jpg" class="img-responsive " alt=""/>
-		                       </div>
-		                       <div class="prod1-desc">
-		                           <h5><a class="product_link" href="#">Excepteur sint</a></h5>
-		                           <p class="product_descr"> Vivamus ante lorem, eleifend nec interdum non, ullamcorper et arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>									
-							   </div>
-							  <div class="clearfix"></div>
-					      </div>
-						  <div class="product_price">
-								<span class="price-access">$597.51</span>								
-								<button class="button1"><span>Add to cart</span></button>
-		                  </div>
-						 <div class="clearfix"></div>
-				     </div>
-				     <div class="product">
-						   <div class="product-desc">
-								<div class="product-img">
-		                           <img src="images/w10.jpg" class="img-responsive " alt=""/>
-		                       </div>
-		                       <div class="prod1-desc">
-		                           <h5><a class="product_link" href="#">Excepteur sint</a></h5>
-		                           <p class="product_descr"> Vivamus ante lorem, eleifend nec interdum non, ullamcorper et arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>									
-							   </div>
-							   <div class="clearfix"></div>
-					      </div>
-						  <div class="product_price">
-								<span class="price-access">$597.51</span>								
-								<button class="button1"><span>Add to cart</span></button>
-		                  </div>
-						 <div class="clearfix"></div>
-				     </div>
-		   	  </div>
+
+
 	       </div>	
-	<div class="col-md-3">
-	  <div class="w_sidebar">
-		<div class="w_nav1">
-			<h4>All</h4>
-			<ul>
-				<li><a th:href="@{/books}">Książka</a></li>
-				<li><a th:href="@{/ebooks}">e-booki</a></li>
-			</ul>	
-		</div>
-		<h3>Filtrowanie: </h3>
-		<section  class="sky-form">
-					<h4>Kategorie</h4>
-						<div class="row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Biografie</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Biznes, Ekonomia, Marketing</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Dla Dzieci</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Dla Młodzieży</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>Fantastyka</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Horror</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Historia</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Informatyka</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Komiks</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kryminał, Sensacja, Thriller</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Ksiazka regionalna</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kuchnia i Diety</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Lektury, Pomoce Szkolne</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Literatura Faktu, Reportaż</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Literatura Piękna obca</label>	
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Literatura Piękna Polska</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Nauka Języków</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Nauki ścisłe, Medycyna</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Podręczniki Szkolne, Edukacja</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Poezja, Aforyzm, Dramat</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Poradniki</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Prawo</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Religie i Wyznania</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Rozwój osobisty</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sport i wypoczynek</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sztuka</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Turystyka i Podróże</label>
-							</div>
-						</div>
-		</section>
-		<section  class="sky-form">
-					<h4>Wydawnictwo</h4>
-						<div class="row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>PWN</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Helion</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>
-                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>
-	                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>
-	                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>
-	                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>
-	                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>
-	                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>
-	                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>
-	                                <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>jakies fajne wydawnictwo</label>																						
-							</div>
-						</div>
-		</section>
-		<section class="sky-form">
-						<h4>Zniżki:</h4>
-						<div class="row1 scroll-pane">
-							<div class="col col-4">
-								<label class="radio"><input type="radio" name="radio" checked=""><i></i>60 % i więcej</label>
-								<label class="radio"><input type="radio" name="radio"><i></i>50 % i więcej</label>
-								<label class="radio"><input type="radio" name="radio"><i></i>40 % i więcej</label>
-							</div>
-							<div class="col col-4">
-								<label class="radio"><input type="radio" name="radio"><i></i>30 % i więcej</label>
-								<label class="radio"><input type="radio" name="radio"><i></i>20 % i więcej</label>
-								<label class="radio"><input type="radio" name="radio"><i></i>10 % i więcej</label>
-							</div>
-						</div>						
-		</section>
-	</div>
-   </div>
-		   <div class="clearfix"></div>		
-	  </div>
+
 	<!-- end content -->
 </div>
 </div>

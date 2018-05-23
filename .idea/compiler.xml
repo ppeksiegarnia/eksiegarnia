@@ -9,8 +9,5 @@
         <module name="pianka" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="pianka" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
