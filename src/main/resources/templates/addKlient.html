@@ -17,27 +17,30 @@
 <div class="row">
 <div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
 <div class="col-xs-6 col-md-6 col-sm-6 col-lg-6"  style="margin-top: 30px; margin-bottom: 30px; border: 5px solid #cc99cc; background-color: white; padding: 40px 15px 40px 15px">
-	<form th:action="@{/addKlient}" method="post" action="#" th:object="${klient}">
+	<form th:action="@{/addKlient}" method="post" action="#" th:object="${user}">
 	<h2 style="text-align: center; color: #919191; margin-bottom: 15px"> DODAWANIE NOWEGO KLIENTA DO BAZY </h2>
 			<div class="form-group">
-				<label for="exampleCompany"><b>Firma</b></label>
-    			<input  class="form-control" type="text" th:field="*{Firma}" id="exampleCompan"placeholder="Firma"/> <br />
+				<label for="exampleImie"><b>Imie</b></label>
+    			<input  class="form-control" type="text" th:field="*{imie}" id="exampleImie"placeholder="Imie"/> <br />
     		</div>
     		<div class="form-group">
-    			<label for="exampleRegon"><b>Regon</b></label>
-    			<input  class="form-control" type="text" th:field="*{Regon}" id="exampleRegon" placeholder="Regon"/><br />
+    			<label for="exampleNazwisko"><b>Nazwisko</b></label>
+    			<input  class="form-control" type="text" th:field="*{nazwisko}" id="exampleNazwisko" placeholder="Nazwisko"/><br />
     		</div>
     		<div class="form-group">
-    			<label for="exampleNIP"><b>NIP</b></label>
-    			<input  class="form-control" type="text" th:field="*{Nip}" id="exampleNIP" placeholder="Nip"/><br />
+    			<label for="exampleEmail"><b>Email</b></label>
+    			<input  class="form-control" type="text" th:field="*{email}" id="exampleEmail" placeholder="Email"/><br />
     		</div>
     		<div class="form-group">
-    			<label for="exampleName"><b>Imię</b></label>
-    			<input  class="form-control" type="text" th:field="*{Imie}" id="exampleName" placeholder="Imie"/><br />
+    			<label for="examplePlec"><b>Płeć</b></label>
+            	<select class="form-control" th:field="*{plec}">
+                	<option value="Mężczyczna">Mężczyzna</option>
+                	<option value="Kobieta">Kobieta</option>
+                </select>
     		</div>
     		<div class="form-group">
-    			<label for="examplesurname"><b>Imię</b></label>
-    			<input  class="form-control" type="text" th:field="*{Nazwisko}" id="examplesurname" placeholder="Nazwisko"/><br />
+    			<label for="exampleHaslo"><b>Hasło</b></label>
+    			<input  class="form-control" type="password" th:field="*{haslo}" id="exampleHaslo" placeholder="haslo"/><br />
     		</div>
     		<div class="text-right">
     			<input class="btn btn-default" type="submit" value="Dodaj"/>

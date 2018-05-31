@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import pl.model.Klient;
+import pl.model.Produkty;
 import pl.model.User;
 import pl.repository.KlientRepository;
 import pl.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class KlienciController {
@@ -40,7 +44,7 @@ public class KlienciController {
     @GetMapping("/klienciAdd")
     public String addKlienta(Model model)
     {
-        model.addAttribute("klient",new Klient());
+        model.addAttribute("user",new User());
         return user.checkPracownik("addKlient");
     }
     @PostMapping("/addKlient")
@@ -54,4 +58,23 @@ public class KlienciController {
         return user.checkPracownik("klienci");
     }
 
+    @GetMapping("/UsunKlienta") 
+    public String usun(Model model,@RequestParam Long ID) {
+    	user = new CheckAuth(model);
+    	userRepository.deleteById(ID);
+    	   List<User> all = userRepository.findAllUsers();
+           model.addAttribute("all", all);
+           model.addAttribute("succes","Usunięto Klienta");
+    	return user.checkPracownik("klienci");
+    }
+    
+    
+    @GetMapping("/EdytujKlienta")
+    public String edytuj(Model model,@RequestParam Long ID) {
+    	
+    	Optional<User> user=userRepository.findById(ID);
+    	User u=user.get();
+    	model.addAttribute("user",u);
+    	return "edycjaKlienta";
+    }
 }

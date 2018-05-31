@@ -21,8 +21,8 @@
 
         <form  id="registration_form" enctype="multipart/form-data" th:action="@{/addProduct}"  action="#" method="post" th:object="${product}" >
             
-            <input type="text" id="niewidzialnosc" style="visibility:hidden;" th:field="*{ID}" />
-            <h2 style="text-align: center; color: #919191; margin-bottom: 15px"> DODAWANIE NOWEGO PRODUKTU DO BAZY </h2>
+            <input type="text" style="visibility:hidden;" th:field="*{ID}" />
+            <h2 style="text-align: center; color: #919191; margin-bottom: 15px"> EDYCJA PRODUKTU </h2>
             <div class="form-group">
             <label for="wydawnictwo"><b >Wydawnictwo</b></label>
             <input class="form-control" type="text" id="wydawnictwo" th:field="*{wydawnictwo}" placeholder="Wydawnictwo"/> <br/>
