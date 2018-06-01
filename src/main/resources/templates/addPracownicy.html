@@ -18,42 +18,42 @@
 <div class="row">
 <div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
 <div class="col-xs-6 col-md-6 col-sm-6 col-lg-6"  style="margin-top: 30px; margin-bottom: 30px; border: 5px solid #cc99cc;; background-color: white; padding: 40px 15px 40px 15px">
-	<form enctype="multipart/form-data" th:action="@{/addPracownicy}" method="post" action="#" th:object="${pracownik}" th:objects="${uzytkownik}">
+	<form enctype="multipart/form-data" th:action="@{/addPracownicy}" method="post" action="#" th:object="${mfo}" th:objects="${uzytkownik}">
 	<h2 style="text-align: center; color: #919191; margin-bottom: 15px"> DODAWANIE NOWEGO PRACOWNIKA DO BAZY </h2>
 			<div class="form-group">
-				<label for="exampleImie"><b>Imie</b></label>
-    			<input  class="form-control" type="text" th:value="*{imie}" id="exampleImie"placeholder="Imie"/> <br />
+    			<label for="exampleImie"><b>Imie</b></label>
+    			<input  class="form-control" type="text" th:field="*{uzytkownik.imie}" id="exampleImie" placeholder="Imie"/><br />
     		</div>
     		<div class="form-group">
     			<label for="exampleNazwisko"><b>Nazwisko</b></label>
-    			<input  class="form-control" type="text" th:field="*{nazwisko}" id="exampleNazwisko" placeholder="Nazwisko"/><br />
+    			<input  class="form-control" type="text" th:field="*{uzytkownik.nazwisko}" id="exampleNazwisko" placeholder="Nazwisko"/><br />
     		</div>
     		<div class="form-group">
     			<label for="exampleEmail"><b>Email</b></label>
-    			<input  class="form-control" type="text" th:field="*{email}" id="exampleEmail" placeholder="Email"/><br />
+    			<input  class="form-control" type="text" th:field="*{uzytkownik.email}" id="exampleEmail" placeholder="Email"/><br />
     		</div>
     		<div class="form-group">
     			<label for="examplePlec"><b>Płeć</b></label>
-            	<select class="form-control" th:field="*{plec}">
+            	<select class="form-control" th:field="*{uzytkownik.plec}">
                 	<option value="Mężczyczna">Mężczyzna</option>
                 	<option value="Kobieta">Kobieta</option>
                 </select>
     		</div>
     		<div class="form-group">
     			<label for="exampleHaslo"><b>Hasło</b></label>
-    			<input  class="form-control" type="password" th:field="*{haslo}" id="exampleHaslo" placeholder="haslo"/><br />
+    			<input  class="form-control" type="password" th:field="*{uzytkownik.haslo}" id="exampleHaslo" placeholder="haslo"/><br />
     		</div>
     		<div class="form-group">
     			<label for="exampleHire"><b>Data Zatrudnienia</b></label>
-    			<input  class="form-control" type="text" th:field="*{data_zatrudnienia}" id="exampleHire" placeholder="hiredate"/><br />
+    			<input  class="form-control" type="text" th:field="*{pracownik.data_zatrudnienia}" id="exampleHire" placeholder="hiredate"/><br />
     		</div>
     		<div class="form-group">
             <label for="examplePesel"><b>Pesel</b></label>
-            <input  class="form-control" id="examplePesel" type="number" th:field="*{pesel}" placeholder="pesel"/><br/>
+            <input  class="form-control" id="examplePesel" type="number" th:field="*{pracownik.pesel}" placeholder="pesel"/><br/>
             </div>
             <div class="form-group">
             <label for="exampleSalary"><b>Pensja</b></label>
-            <input  class="form-control" id="exampleSalary" type="number" th:field="*{pensja}" placeholder="pensja"/><br/>
+            <input  class="form-control" id="exampleSalary" type="number" th:field="*{pracownik.pensja}" placeholder="pensja"/><br/>
             </div>
     		<div class="text-right">
     			<input class="btn btn-default" type="submit" value="Dodaj"/>

@@ -49,21 +49,25 @@ public class PracownicyController {
     public String add(Model model)
     {
     	User u = new User();
-        Pracownik pracownik=new Pracownik(u);
-        model.addAttribute("pracownik",pracownik);
+        Pracownik pracownik=new Pracownik();
+        WorkerUserMerger mfo = new WorkerUserMerger(u,pracownik);
+        model.addAttribute("mfo",mfo);
         
         return user.checkAdmin("addPracownicy");
     }
 
     @PostMapping("/addPracownicy")
-    public String addPracownicy(@ModelAttribute Pracownik pracownik,Model model)
+    public String addPracownicy(@ModelAttribute WorkerUserMerger mfo,Model model)
     {
     	user = new CheckAuth(model);
-    	pracownik.setPensja(2.0);
+    	Pracownik pracownik = mfo.getPracownik();
+    	User u = mfo.getUzytkownik();
+    	userRepository.save(u);
+    	pracownik.setID(u.getID());
         pracownicyRepository.save(pracownik);
-        List<Pracownik> all=pracownicyRepository.findAll();
-        model.addAttribute("all",all);
-        model.addAttribute("succes","Dodano nowego pracownika");
+        //List<Pracownik> all=pracownicyRepository.findAll();
+        //model.addAttribute("all",all);
+        //model.addAttribute("succes","Dodano nowego pracownika");
         return user.checkAdmin("pracownicy");
     }
 }
