@@ -95,7 +95,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a th:href="@{/admin}">Panel</a>
 					</div>
 				</div>
-
+				
+				<div th:if="${user == 'user'}">
+							<div class="create_btn">
+								<a th:href="@{/panelUzytkownika}">Moje Konto</a>
+							</div>
+				</div>
+						
+								
 				<div th:if="${user}=='anonymousUser'"   class="reg">
 					<a th:href="@{/register}">ZAREJESTRUJ</a>
 				</div>
