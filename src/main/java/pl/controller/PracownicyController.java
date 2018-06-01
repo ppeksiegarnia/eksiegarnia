@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.model.Pracownik;
 import pl.model.User;
 import pl.repository.PracownicyRepository;
+import pl.repository.UserRepository;
 
 import java.util.List;
 
@@ -21,14 +22,18 @@ import java.util.List;
 public class PracownicyController {
 
     private PracownicyRepository pracownicyRepository;
+    private UserRepository userRepository;
     CheckAuth user;
 
     @Autowired
     public void setPracownicyRepository(PracownicyRepository pracownicyRepository) {
         this.pracownicyRepository = pracownicyRepository;
     }
-
-    private static final Logger log= LoggerFactory.getLogger(PracownicyController.class);
+    
+    @Autowired
+    public void setKlientRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
 	@GetMapping("/pracownicy")
 	public String register(Model model)
@@ -43,17 +48,18 @@ public class PracownicyController {
     @GetMapping("/add")
     public String add(Model model)
     {
-    	user = new CheckAuth(model);
-        Pracownik pracownik=new Pracownik();
+    	User u = new User();
+        Pracownik pracownik=new Pracownik(u);
         model.addAttribute("pracownik",pracownik);
-
+        
         return user.checkAdmin("addPracownicy");
     }
 
-    @PostMapping("/add")
-    public String dodaj(@ModelAttribute Pracownik pracownik,Model model)
+    @PostMapping("/addPracownicy")
+    public String addPracownicy(@ModelAttribute Pracownik pracownik,Model model)
     {
     	user = new CheckAuth(model);
+    	pracownik.setPensja(2.0);
         pracownicyRepository.save(pracownik);
         List<Pracownik> all=pracownicyRepository.findAll();
         model.addAttribute("all",all);

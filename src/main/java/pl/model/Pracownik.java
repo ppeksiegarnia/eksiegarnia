@@ -2,55 +2,72 @@ package pl.model;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Entity
-@Data
+@Entity(name = "WorkerDetails")
+@Table(name = "worker_details")
 public class Pracownik {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
-
-    private String imie;
-    private String nazwisko;
+    private Long user_id;
+    
+    @Column(name = "hire_date")
     private String data_zatrudnienia;
-    private String data_zwolnienia;
+    
+    @Column(name = "pesel")
     private int pesel;
+    
+    @Column(name = "salary")
     private double pensja;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+    
+    
+    
+    public Pracownik() {
+	}
+    
+    public Pracownik(User user) {
+    	this.user = user;
+	}
+    
+    public Pracownik(Long iD) {
+    	user_id = iD;
+	}
+    
+    public Pracownik(Long iD, String data_zatrudnienia, int pesel,
+			double pensja) {
+    	user_id = iD;
+		this.data_zatrudnienia = data_zatrudnienia;
+		this.pesel = pesel;
+		this.pensja = pensja;
+	}
+    
 	public Long getID() {
-		return ID;
+		return user_id;
 	}
 	public void setID(Long iD) {
-		ID = iD;
+		user_id = iD;
 	}
-	public String getImie() {
-		return imie;
-	}
-	public void setImie(String imie) {
-		this.imie = imie;
-	}
-	public String getNazwisko() {
-		return nazwisko;
-	}
-	public void setNazwisko(String nazwisko) {
-		this.nazwisko = nazwisko;
-	}
+	
 	public String getData_zatrudnienia() {
 		return data_zatrudnienia;
 	}
 	public void setData_zatrudnienia(String data_zatrudnienia) {
 		this.data_zatrudnienia = data_zatrudnienia;
 	}
-	public String getData_zwolnienia() {
-		return data_zwolnienia;
-	}
-	public void setData_zwolnienia(String data_zwolnienia) {
-		this.data_zwolnienia = data_zwolnienia;
-	}
+	
 	public int getPesel() {
 		return pesel;
 	}
@@ -65,25 +82,55 @@ public class Pracownik {
 	}
 	@Override
 	public String toString() {
-		return "Pracownik [ID=" + ID + ", imie=" + imie + ", nazwisko=" + nazwisko + ", data_zatrudnienia="
-				+ data_zatrudnienia + ", data_zwolnienia=" + data_zwolnienia + ", pesel=" + pesel + ", pensja=" + pensja
+		return "Pracownik [ID=" + user_id + ", data_zatrudnienia="
+				+ data_zatrudnienia +  ", pesel=" + pesel + ", pensja=" + pensja
 				+ "]";
 	}
-	public Pracownik(Long iD, String imie, String nazwisko, String data_zatrudnienia, String data_zwolnienia, int pesel,
-			double pensja) {
-		super();
-		ID = iD;
-		this.imie = imie;
-		this.nazwisko = nazwisko;
-		this.data_zatrudnienia = data_zatrudnienia;
-		this.data_zwolnienia = data_zwolnienia;
-		this.pesel = pesel;
-		this.pensja = pensja;
-	}
-	public Pracownik() {
-		super();
-	}
-
-    
 	
+	 public String getImie() {
+	        return user.getImie();
+	    }
+
+	    public void setImie(String imie) {
+	        user.setImie(imie);
+	    }
+
+	    public String getNazwisko() {
+	        return user.getNazwisko();
+	    }
+
+	    public void setNazwisko(String nazwisko) {
+	        user.setNazwisko(nazwisko);
+	    }
+
+	    public String getEmail() {
+	        return user.getEmail();
+	    }
+
+	    public void setEmail(String email) {
+	        user.setEmail(email);
+	    }
+
+	    public String getPlec() {
+	        return user.getPlec();
+	    }
+
+	    public void setPlec(String plec) {
+	        user.setPlec(plec);
+	    }
+    
+	    public String getHaslo() {
+	        return user.getHaslo();
+	    }
+
+	    public void setHaslo(String haslo) {
+	        user.setHaslo(haslo);
+	    }
+	    public void setUser(User u) {
+	    	this.user = u;
+	    }
+	    
+	    public User getUser() {
+	    	return user;
+	    }
 }

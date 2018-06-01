@@ -22,6 +22,11 @@ public class User {
     private String email;
     private String plec;
     private String haslo;
+    
+    @OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            mappedBy = "user")
+    private Pracownik pracownik;
 
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private Set<UserRoles> userRolesSet=new HashSet<>();
