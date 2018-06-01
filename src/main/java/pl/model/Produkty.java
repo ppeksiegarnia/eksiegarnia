@@ -20,7 +20,10 @@ public class Produkty {
     private String ISBN;
     private String kategoria;
     private int iloscStron;
+    @Column(length=2048)
     private String opis;
+    @Column(length=100)
+    private String krotkiOpis;
     private double cenaNetto;
     private double cenaBrutto;
     private boolean czyEbook;
@@ -67,8 +70,17 @@ public class Produkty {
 	public String getOpis() {
 		return opis;
 	}
+	
+	public String getKrotkiOpis() {
+		return krotkiOpis;
+	}
 	public void setOpis(String opis) {
 		this.opis = opis;
+		if(opis.length()<100) {
+			krotkiOpis = opis;
+		} else {
+			krotkiOpis = opis.substring(0, 97) + "...";
+		}
 	}
 	public double getCenaNetto() {
 		return cenaNetto;
@@ -112,7 +124,7 @@ public class Produkty {
 		ISBN = iSBN;
 		this.kategoria = kategoria;
 		this.iloscStron = iloscStron;
-		this.opis = opis;
+		setOpis(opis);
 		this.cenaNetto = cenaNetto;
 		this.cenaBrutto = cenaBrutto;
 		this.czyEbook = czyEbook;
