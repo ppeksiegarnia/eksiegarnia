@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+	<head th:fragment="">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+		<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+		<script type="text/javascript" src="js/megamenu.js"></script>
+		<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+		<script src="js/menu_jquery.js"></script>
+		<script src="js/simpleCart.min.js"> </script>
+		
+	</head>
+<body>
+<div th:fragment="menuadmin">
+	<ul class="megamenu skyblue" >
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}" class="grid">
+				<a class="color1" th:href="@{/}">Strona główna</a>
+			</li>
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/zmianaHasla' ? 'active':''}" class="grid">
+				<a class="color2" th:href="@{/zmianaHasla}">Zmień Hasła</a>
+			</li>
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"  class="grid">
+				<a class="color3" th:href="@{/}">Historia Zamówień</a>
+			</li>						
+		 </ul>
+</div>
+		 
+	<div class="container">
+	<div class="row">
+	<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12">
+	<div class="row">
+	<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
+	<div class="col-xs-6 col-md-6 col-sm-6 col-lg-6"  style="margin-top: 30px; margin-bottom: 30px; border: 5px solid #cc99cc; background-color: white; padding: 40px 15px 40px 15px">
+        
+        <h3>Zmien hasło</h3>
+        <form action="deleteProducts" method="post"  th:action="@{/changePassword}" >
+            <div class="form-group">
+                <p class="text-danger"  th:if="${badOld}" th:text="${badOld}"></p>
+                <label> Stare hasło:</label> <br/>
+                <input type="password" name="oldPassword" />
+            </div>
+
+            <div class="form-group"> <p class="text-danger"  th:if="${badLength}" th:text="${badLength}"> </p>
+                <label> Nowe hasło:</label><br/>
+            <input type="password" name="newPassword1" />
+            </div>
+
+            <div class="form-group">
+                <p class="text-danger"  th:if="${NotTheSame}" th:text="${NotTheSame}"></p>
+
+                <label> Powtorz hasło:</label><br/>
+            <input type="password" name="newPassword2" />
+            </div>
+            
+            <br/>
+            <button type="submit" class="btn btn-lg btn-block btn-success">Zmien hasło</button>
+        </form>
+
+    	</div>
+    </div>
+	</div></div>
+	<div class="col-xs-3 col-md-3 col-sm-3 col-lg-3"></div>
+	</div>
+</body>
+</html>
