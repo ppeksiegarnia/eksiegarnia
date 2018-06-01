@@ -16,14 +16,15 @@ public class CheckAuth {
 		Collection<? extends GrantedAuthority> all=auth.getAuthorities();
         GrantedAuthority admins=new SimpleGrantedAuthority("ADMIN_ROLE");
         GrantedAuthority pracownik=new SimpleGrantedAuthority("WORKER_ROLE");
+        GrantedAuthority uzytkownik=new SimpleGrantedAuthority("DEFAULT_ROLE");
         	String name = auth.getName();
             model.addAttribute("user",name);
             if(all.contains(admins))
-            {
             	model.addAttribute("admin","admin");
-            }
             if(all.contains(pracownik))
             	model.addAttribute("worker","worker");
+            if(all.contains(uzytkownik))
+            	model.addAttribute("user","user");
 	}
 	
 	public String checkAdmin(String strona) {
@@ -34,11 +35,6 @@ public class CheckAuth {
 	public String checkPracownik(String strona) {
 		if(model.containsAttribute("admin")||model.containsAttribute("worker")) return strona;
 		else return "error";
-	}
-	
-	public boolean checkPracownikBool() {
-		if(model.containsAttribute("admin")||model.containsAttribute("worker")) return true;
-		else return false;
 	}
 	
 }
