@@ -17,6 +17,7 @@ import pl.model.Pracownik;
 import pl.model.User;
 import pl.repository.PracownicyRepository;
 import pl.repository.UserRepository;
+import pl.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +28,17 @@ public class PracownicyController {
 
     private PracownicyRepository pracownicyRepository;
     private UserRepository userRepository;
+    private UserService userService;
     CheckAuth user;
 
     @Autowired
     public void setPracownicyRepository(PracownicyRepository pracownicyRepository) {
         this.pracownicyRepository = pracownicyRepository;
+    }
+    
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
     
     @Autowired
@@ -69,6 +76,7 @@ public class PracownicyController {
     	userRepository.save(u);
     	pracownik.setID(u.getID());
         pracownicyRepository.save(pracownik);
+        userService.addWithWorkerRole(u);
         List<Pracownik> all=pracownicyRepository.findAll();
         List<User>allu = userRepository.findAllWorkers();
         List<WorkerUserMerger> wmall = new ArrayList<>();
