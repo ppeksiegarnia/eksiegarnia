@@ -23,6 +23,42 @@ public class WorkerUserMerger {
 		this.pracownik = pracownik;
 	}
 	
+	public Long getID() {
+		return uzytkownik.getID();
+	}
+	
+	public String getImie() {
+		return uzytkownik.getImie();
+	}
+	
+	public String getNazwisko() {
+		return uzytkownik.getNazwisko();
+	}
+	
+	 public String getEmail() {
+	        return uzytkownik.getEmail();
+	    }
+
+	    public String getPlec() {
+	        return uzytkownik.getPlec();
+	    }
+
+	    public String getHaslo() {
+	        return uzytkownik.getHaslo();
+	    }
+		
+		public String getData_zatrudnienia() {
+			return pracownik.getData_zatrudnienia();
+		}
+
+		public int getPesel() {
+			return pracownik.getPesel();
+		}
+
+		public double getPensja() {
+			return pracownik.getPensja();
+		}
+	
 	public User getUzytkownik() {
 		return uzytkownik;
 	}

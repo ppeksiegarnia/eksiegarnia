@@ -18,6 +18,7 @@ import pl.model.User;
 import pl.repository.PracownicyRepository;
 import pl.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,9 +69,14 @@ public class PracownicyController {
     	userRepository.save(u);
     	pracownik.setID(u.getID());
         pracownicyRepository.save(pracownik);
-        //List<Pracownik> all=pracownicyRepository.findAll();
-        //model.addAttribute("all",all);
-        //model.addAttribute("succes","Dodano nowego pracownika");
+        List<Pracownik> all=pracownicyRepository.findAll();
+        List<User>allu = userRepository.findAllWorkers();
+        List<WorkerUserMerger> wmall = new ArrayList<>();
+        for(int i =0 ; i< all.size(); i++) {
+        	wmall.add(new WorkerUserMerger(allu.get(i),all.get(i)));
+        }
+        model.addAttribute("all",wmall);
+        model.addAttribute("succes","Dodano nowego pracownika");
         return user.checkAdmin("pracownicy");
     }
     
@@ -81,7 +87,7 @@ public class PracownicyController {
     	userRepository.deleteById(ID);
     	   List<Pracownik> all = pracownicyRepository.findAll();
            model.addAttribute("all", all);
-           model.addAttribute("succes","Usunięto Klienta");
+           model.addAttribute("succes","Usunięto Pracownika");
     	return user.checkPracownik("pracownicy");
     }
     

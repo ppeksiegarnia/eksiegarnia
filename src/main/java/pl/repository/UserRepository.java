@@ -17,6 +17,7 @@ public interface UserRepository  extends JpaRepository<User,Long>{
     @Query(value="select * from user u left join worker_details r on u.ID = r.user_id where user_id is null", nativeQuery = true)
 	List<User> findAllUsers();
     
-    
+    @Query(value="select * from user u left join worker_details r on u.ID = r.user_id where user_id is not null", nativeQuery = true)
+	List<User> findAllWorkers();
 
 }

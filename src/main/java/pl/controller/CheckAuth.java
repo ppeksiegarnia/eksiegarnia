@@ -36,4 +36,9 @@ public class CheckAuth {
 		else return "error";
 	}
 	
+	public boolean checkPracownikBool() {
+		if(model.containsAttribute("admin")||model.containsAttribute("worker")) return true;
+		else return false;
+	}
+	
 }
