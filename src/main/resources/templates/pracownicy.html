@@ -41,7 +41,7 @@
                 <td th:text="*{data_zatrudnienia}"></td>
                 <td th:text="*{pesel}"></td>
                 <td th:text="*{pensja}"></td>
-                <td>Edytuj/Usun</td>
+                <td><a th:href="@{/EdytujPracownika(ID=*{ID})}"> Edytuj</a>/<a th:href="@{/UsunPracownika(ID=*{ID})}">Usun</a></td>
 
 
 

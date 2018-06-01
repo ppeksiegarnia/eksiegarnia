@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import pl.model.Pracownik;
 import pl.model.User;
 import pl.repository.PracownicyRepository;
 import pl.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PracownicyController {
@@ -69,5 +72,26 @@ public class PracownicyController {
         //model.addAttribute("all",all);
         //model.addAttribute("succes","Dodano nowego pracownika");
         return user.checkAdmin("pracownicy");
+    }
+    
+    @GetMapping("/UsunPracownika") 
+    public String usun(Model model,@RequestParam Long ID) {
+    	user = new CheckAuth(model);
+    	pracownicyRepository.deleteById(ID);
+    	userRepository.deleteById(ID);
+    	   List<Pracownik> all = pracownicyRepository.findAll();
+           model.addAttribute("all", all);
+           model.addAttribute("succes","Usunięto Klienta");
+    	return user.checkPracownik("pracownicy");
+    }
+    
+    @GetMapping("/EdytujPracownika")
+    public String edytuj(Model model,@RequestParam Long ID) {
+    	
+    	Optional<User> user=userRepository.findById(ID);
+    	Optional<Pracownik> prac=pracownicyRepository.findById(ID);
+    	WorkerUserMerger mfo = new WorkerUserMerger(user.get(),prac.get());
+    	model.addAttribute("mfo",mfo);
+    	return "edycjaPracownika";
     }
 }

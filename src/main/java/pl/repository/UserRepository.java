@@ -14,11 +14,8 @@ import pl.model.UserRoles;
 public interface UserRepository  extends JpaRepository<User,Long>{
     User findFirstByEmail(String email);
 
-    @Query(value="SELECT * FROM user u LEFT JOIN user_user_roles_set r ON u.ID = r.user_id WHERE user_roles_set_id IS NULL", nativeQuery = true)
+    @Query(value="select * from user u left join worker_details r on u.ID = r.user_id where user_id is null", nativeQuery = true)
 	List<User> findAllUsers();
-
-    @Query(value="select * from user u join worker_details p on u.id = p.user_id;", nativeQuery = true)
-	List<User> findAllWorkers();
     
     
 
