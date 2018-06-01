@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+	<head th:fragment="">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+		<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+		<script type="text/javascript" src="js/megamenu.js"></script>
+		<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+		<script src="js/menu_jquery.js"></script>
+		<script src="js/simpleCart.min.js"> </script>
+		
+	</head>
+<body>
+<div th:fragment="menuadmin">
+	<ul class="megamenu skyblue" >
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}" class="grid">
+				<a class="color1" th:href="@{/}">Strona główna</a>
+			</li>
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/zmianaHasla' ? 'active':''}" class="grid">
+				<a class="color2" th:href="@{/zmianaHasla}">Zmień Hasła</a>
+			</li>
+			<li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"  class="grid">
+				<a class="color3" th:href="@{/}">Historia Zamówień</a>
+			</li>						
+		 </ul>
+		 
+</div>
+</body>
+</html>
