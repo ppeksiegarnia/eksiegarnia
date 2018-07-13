@@ -18,40 +18,45 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			 <div class="price-details">
 				 <h3>Szczegóły</h3>
 				 <span>Suma</span>
-				 <div class = "chaching"><span class="simpleCart_total">0.00 PLN</span></div>
+				 <div class = "chaching"><span th:text="${suma}" class="simpleCart_total">0</span></div>
 				 <span>Zniżka</span>
 				 <span class="total1">---</span>
 				 <span>Koszty dostawy</span>
-				 <span class="shipping">150.00</span>
-				 <div class="clearfix"></div>				 
+				 <span th:text="${koszt} + '0 zł'" class="shipping">10.00</span>
+				 <div class="clearfix"></div>	
+				 <h3>Dostawa</h3>
+				 <form method="post" th:action="@{/wyborDostawy}">
+				  <div class="shipping">
+					  <label class="checkbox"><input  type="radio"  value="Poczta polska" name="filter"><i></i>Poczta polska</label>
+					  <label class="checkbox"><input type="radio" value="Kurier" name="filter"><i></i>Kurier</label>
+					  <label class="checkbox"><input type="radio" value="Odbior osobisty" name="filter"><i></i>Odbior osobisty</label>
+					  
+					  <button type="submit" >Wybierz</button>				  
+					  </div>	
+				  </form>		 
 			 </div>	
 			 <ul class="total_price">
 			   <li class="last_price"> <h4>SUMA</h4></li>	
-			   <li class="last_price_count"><span class="TotalDosh">0.00 PLN</span></li>
+			   <li class="last_price_count" th:text="${sumaAll} + '0 zł'"><span class="TotalDosh">0.00 PLN</span></li>
 			   <div class="clearfix"> </div>
 			 </ul>
 			
 			</div>
 		 <div class="col-md-9 cart-items">
 			 <h1>Mój koszyk</h1>
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-			 <div class="cart-header">
-				 <div class="close1"> </div>
+				
+			 <div class="cart-header" th:each="p: ${productss}" th:object="${p}">
+				 <a class="close1" th:href="@{/UsunKsiazke(ID=*{ID})}"> </a>
 				 <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
-							 <img src="images/8.jpg" class="img-responsive" alt=""/>
+						
+						<img  class="img-responsive" th:unless="*{zdjecia.isEmpty()}" th:src="*{zdjecia.get(0).getAdres()}"    alt=""/>
+						<img class="img-responsive"  th:if="*{zdjecia.isEmpty()}"   src="/images/brak.jpg"  />
 						</div>
 					   <div class="cart-item-info">
-						<h3><a href="#">Istoty Ciemności </a><span>Model No: 3578</span></h3>
+						<h3><a th:text="*{tytul}" href="#">Istoty Ciemności </a><span th:text="*{wydawnictwo}" >Model No: 3578</span></h3>
 						<ul class="qty">
-							<li><p>Liczba stron: 5</p></li>
+							<li><p>Liczba stron: <div th:text="*{iloscStron}" > 5 </div> </p></li>
 						</ul>
 						
 							 <div class="delivery">
@@ -62,37 +67,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					   <div class="clearfix"></div>
 											
 				  </div>
+				  
+				  
+				  
+				  
+				  
+				
 			 </div>
-			 <script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-							$('.cart-header2').fadeOut('slow', function(c){
-						$('.cart-header2').remove();
-					});
-					});	  
-					});
-			 </script>
-			 <div class="cart-header2">
-				 <div class="close2"> </div>
-				  <div class="cart-sec simpleCart_shelfItem">
-						<div class="cart-item cyc">
-							 <img src="images/11.jpg" class="img-responsive" alt=""/>
-						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3>
-						<ul class="qty">
-							<li><p>Liczba stron : 5</p></li>
-							
-						</ul>
-							 <div class="delivery">
-							 <span>Dostawa w ciągu 2-3 dni roboczych</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
-			  </div>		
-		 </div>
+			
 		 
 		
 			<div class="clearfix"> </div>
@@ -100,19 +82,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	 </div>
 <div th:replace="template :: footer"></div>
 
-<script>
-$(window).bind("load", function() {
-    var a = $(".chaching").text();
-    var str1 = a.replace ( /[^\d.]/g, '' );
-    
-    
-    var b = $(".shipping").text();
-    var str2 = b.replace ( /[^\d.]/g, '' );
-    
-    total = (parseFloat(str1) + parseFloat(str2)).toFixed(2);
-    
-    $(".TotalDosh").text(total);
-});
-</script>
+
 </body>
 </html>

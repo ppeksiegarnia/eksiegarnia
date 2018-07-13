@@ -20,10 +20,10 @@
             <thead class="thead-dark text-light text-center">
                 <tr>                    
                     <th>Id Produktu</th>
-                    <th>Wydawnictwo</th>
                     <th>Tytuł</th>
                     <th>ISBN</th>
                     <th>Kategoria</th>
+                    <th>Wydawnictwo</th>
                     <th>Ilość Stron</th>
                     <th>Opis</th>
                     <th>Cena Netto</th>
@@ -36,10 +36,10 @@
             <tbody>
                 <tr th:each="p : ${all}" th:object="${p}" >
                     <td th:text="*{ID}"></td>
-                    <td th:text="*{wydawnictwo}"></td>
-                    <td  th:text="*{tytul}"></td>
+                    <td th:text="*{tytul}"></td>
                     <td th:text="*{ISBN}"></td>
                     <td th:text="*{kategoria}"></td>
+                    <td th:text="*{wydawnictwo}"></td>
                     <td th:text="*{iloscStron}"></td>
                     <td th:text="*{opis}"></td>
                     <td th:text="*{cenaNetto}"></td>

@@ -19,10 +19,7 @@
 			</li>
 			<li th:classappend="${#httpServletRequest.getRequestURI() == '/zmianaHasla' ? 'active':''}" class="grid">
 				<a class="color2" th:href="@{/zmianaHasla}">Zmień Hasła</a>
-			</li>
-			<li th:classappend="${#httpServletRequest.getRequestURI() == '/' ? 'active':''}"  class="grid">
-				<a class="color3" th:href="@{/}">Historia Zamówień</a>
-			</li>						
+			</li>					
 		 </ul>
 </div>
 		 

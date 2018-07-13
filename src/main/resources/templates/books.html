@@ -96,14 +96,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div  th:each="p: ${products}" class="grid1_of_4" th:object="${p}">
 				<div class="content_box"><a th:href="@{/details(ID=*{ID})}">
 				<img  th:unless="*{zdjecia.isEmpty()}" th:src="*{zdjecia.get(0).getAdres()}"  class="img-responsive-product"  alt=""/>
-					<img th:if="*{zdjecia.isEmpty()}" class="img-responsive-product"  src="/images/brak.jpg"  />
+				<img th:if="*{zdjecia.isEmpty()}" class="img-responsive-product"  src="/images/brak.jpg"  />
 				</a>
 					<h4><a th:href="@{/details}" th:text="*{tytul}" > Duis autem</a></h4>
 					<p th:text="*{krotkiOpis}">Wspaniały krótki opis produktu</p>
 					<div class="grid_1 simpleCart_shelfItem">
 
-						<div class="item_add"><span class="item_price" th:text="*{cenaBrutto}" ><h6>Tylko 109.00 zł</h6></span></div>
-						<div class="item_add"><span class="item_price"><a href="#">dodaj do koszyka</a></span></div></div><br />
+						<div class="item_add"><span class="item_price" th:text="*{cenaBrutto} + '0 zł'" ><h6>Tylko 109.00 zł</h6></span></div>
+						<div  th:unless="${nieznajomy}=='anonymousUser'"  class="item_add"><span class="item_price"><a th:href="@{/addKoszykB(ID=*{ID})}">dodaj do koszyka</a></span></div></div><br />
 					</div>
 				</div>
 

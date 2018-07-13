@@ -13,14 +13,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.model.Produkty;
 import pl.model.User;
 import pl.repository.ProduktyRepository;
+import pl.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class EBooksController {
 
     @Autowired
     private ProduktyRepository produktyRepository;
+    
+    @Autowired
+    private UserRepository UserRepository;
 
 	@GetMapping("/ebooks")
 	public String register(Model model, @RequestParam(defaultValue = "Wszystkie") String word,@RequestParam(defaultValue = "0") int page)
@@ -51,4 +56,22 @@ public class EBooksController {
 		new CheckAuth(model);
         return "ebooks";
     }
+	
+	
+	
+	
+	@GetMapping("/addKoszykE")
+	public String addBook(@RequestParam Long ID) {
+
+		Optional<Produkty> op=produktyRepository.findById(ID);
+		Produkty p=op.get();
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user=UserRepository.findFirstByEmail(auth.getName());
+		user.getProductSet().add(p);
+		UserRepository.save(user);
+		
+		return "redirect:ebooks";
+		
+	}
 }

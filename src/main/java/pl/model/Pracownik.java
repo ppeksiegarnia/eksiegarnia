@@ -22,8 +22,8 @@ public class Pracownik {
     
     @Column(name = "hire_date")
     private String data_zatrudnienia;
-
-    @Column(name = "pesel",length=11)
+    
+    @Column(name = "pesel")
     private int pesel;
     
     @Column(name = "salary")
