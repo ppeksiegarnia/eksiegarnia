@@ -99,7 +99,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<img th:if="*{zdjecia.isEmpty()}" class="img-responsive-product"  src="/images/brak.jpg"  />
 				</a>
 					<h4><a th:href="@{/details}" th:text="*{tytul}" > Duis autem</a></h4>
-					<p th:text="*{krotkiOpis}">Wspaniały krótki opis produktu</p>
+					<p th:text="*{opis}">Wspaniały krótki opis produktu</p>
 					<div class="grid_1 simpleCart_shelfItem">
 
 						<div class="item_add"><span class="item_price" th:text="*{cenaBrutto} + '0 zł'" ><h6>Tylko 109.00 zł</h6></span></div>
