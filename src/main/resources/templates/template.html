@@ -28,17 +28,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <script src="js/menu_jquery.js"></script>
 <script src="js/simpleCart.min.js"> </script>
-<script>
-simpleCart.currency({
-    code: "ZL" ,
-    name: "Polskie Złote" ,
-    symbol: " zł" ,
-    delimiter: " " , 
-    decimal: "." , 
-    after: true ,
-    accuracy: 2
-});
-</script>
 </head>
 <body>
 <div th:fragment="header">
@@ -117,22 +106,18 @@ simpleCart.currency({
 				<div th:if="${user}=='anonymousUser'"   class="reg">
 					<a th:href="@{/register}">ZAREJESTRUJ</a>
 				</div>
-				<div th:if="${user}!='anonymousUser'">
 			<div class="cart box_1">
 				<a th:href="@{/checkout}">
 					<h3> <span class="simpleCart_total">0.00 PLN</span> (<span id="simpleCart_quantity" class="simpleCart_quantity">0</span> artykułów)<img src="images/bag.png" alt=""></h3>
 				</a>	
-				<p><a href="javascript:;" class="simpleCart_empty" th:href="@{/UsunKoszyk}">(opróżnij koszyk)</a></p>
+				<p><a href="javascript:;" class="simpleCart_empty">(opróżnij koszyk)</a></p>
 				<div class="clearfix"> </div>
 			</div>
-			
 			<div class="create_btn">
 				<a th:href="@{/checkout}">SPRAWDŹ</a>
 			</div>
-			</div>
 			<div class="clearfix"> </div>
-			</div>
-		
+		</div>
 		<div class="search">
 		    <form method="get" action="#" th:action="@{/search}">
 		    	<input type="text" name="word" value="" placeholder="Wyszukaj...">
@@ -334,7 +319,7 @@ simpleCart.currency({
 			<h4>INFORMACJE</h4>
 				<li><a href="#">Centrum Pomocy</a></li>
 				<li><a href="#">FAQ</a></li>
-				<li><a href="#">Jak kupić</a></li>
+				<li><a href="buy.html">Jak kupić</a></li>
 				<li><a href="#">Dostawa</a></li>
 		</div>
 		<div class="col-md-2 abt">
@@ -345,10 +330,10 @@ simpleCart.currency({
 		</div>
 		<div class="col-md-2 myac">
 			<h4>MOJE KONTO</h4>
-				<li><a th:href="@{/register}">Rejestracja</a></li>
-				<div th:unless="${nieznajomy}=='anonymousUser'"><li><a th:href="@{/checkout}">Koszyk</a></li></div>
+				<li><a href="register.html">Rejestracja</a></li>
+				<li><a href="#">Koszyk</a></li>
 				<li><a href="#">Historia Zamówień</a></li>
-				<li><a href="#">Płatność</a></li>
+				<li><a href="buy.html">Płatność</a></li>
 		</div>
 		<div class="col-md-5 our-st">
 			<div class="our-left">
@@ -364,6 +349,5 @@ simpleCart.currency({
 	</div>
 </div>
 </div>
-
 </body>
 </html>

@@ -40,16 +40,7 @@ public class UserRoles {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
-	@Override
-	public String toString() {
-		return "UserRoles [ID=" + ID + ", role=" + role + ", description=" + description + "]";
-	}
     
-	
-	
-	
-	
     
 }
 

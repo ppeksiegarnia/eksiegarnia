@@ -46,17 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			});
 		</script>
-<script>
-simpleCart.currency({
-    code: "ZL" ,
-    name: "Polskie Złote" ,
-    symbol: " zł" ,
-    delimiter: " " , 
-    decimal: "," , 
-    after: true ,
-    accuracy: 2
-});
-</script>
+
 </head>
 <body>
 <div th:replace="template :: header"></div>
@@ -87,6 +77,10 @@ simpleCart.currency({
 					<br>
 					<span class="code" th:text="*{ISBN}">Kod produktu: f-ic-m-11</span>
 					<p th:text="*{opis}">Sie pojawiła istotka i była ciemna, hehe koniec xd</p>
+						<div class="price">
+							<span  class="text">Cena:</span>
+							<span  th:text="*{cenaBrutto}" class="price-new">30.50zł</span>
+						</div>
 					  <p th:if="*{czyEbook}" th:text="Ebook" />
 					  <p th:unless="*{czyEbook}" th:text="Ksiazka" />
 
@@ -99,12 +93,10 @@ simpleCart.currency({
 								</ul>
 							</div>
 					</div>
-					<div style="text-align:left !important;">
-					<div class="grid_1 simpleCart_shelfItem">
-						<div class="item_add" style="text-align:left !important; padding: 10px 0px !important;"><span class="item_price" th:text="'Tylko: ' +*{cenaBrutto} + '0 zł'" ><h6>Tylko 109.00 zł</h6></span></div>
-						<div  th:unless="${nieznajomy}=='anonymousUser'"  class="item_add" style="text-align:left !important; padding: 10px 0px !important;"><span class="item_price"><a th:href="@{/detailsAdd(ID=*{ID})}">dodaj do koszyka</a></span></div><br />
-					    <div  th:unless="${nieznajomy}=='anonymousUser'"  class="item_add" style="text-align:left !important; padding: 10px 0px !important;"><span class="item_price"><a th:href="@{/addKoszykB(ID=*{ID})}">dodaj do koszyka i kontynuuj zakupy</a></span></div></div>
-					   </div> 
+					<div class="btn_form">
+						<a href="checkout.html">buy</a>
+					</div>
+					<a th:href="@{/books}"><span>Wrzuć do koszyka, i kontynuuj zakupy</span></a>
 					
 			   	 </div>
           	    <div class="clearfix"></div>

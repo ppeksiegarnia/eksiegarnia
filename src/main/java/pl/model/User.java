@@ -3,14 +3,8 @@ package pl.model;
 import lombok.Data;
 
 import javax.persistence.*;
-
-
-
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
-
 
 @Entity
 @Table(name = "user")
@@ -36,9 +30,6 @@ public class User {
 
     @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     private Set<UserRoles> userRolesSet=new HashSet<>();
-    
-    @ManyToMany(cascade= CascadeType.ALL,fetch=FetchType.EAGER.EAGER)
-    private List<Produkty> productSet=new LinkedList<>();
 
     public User(String imie, String nazwisko, String email, String plec, String haslo, Set<UserRoles> userRolesSet) {
         this.imie = imie;
@@ -49,75 +40,7 @@ public class User {
         this.userRolesSet = userRolesSet;
     }
 
-    
-    
- 
-
-
-
-
-	public User(Long iD, String imie, String nazwisko, String email, String plec, String haslo, Pracownik pracownik,
-			Set<UserRoles> userRolesSet, List<Produkty> productSet) {
-		super();
-		ID = iD;
-		this.imie = imie;
-		this.nazwisko = nazwisko;
-		this.email = email;
-		this.plec = plec;
-		this.haslo = haslo;
-		this.pracownik = pracownik;
-		this.userRolesSet = userRolesSet;
-		this.productSet = productSet;
-	}
-
-
-
-
-
-
-
-
-	public Pracownik getPracownik() {
-		return pracownik;
-	}
-
-
-
-
-	public void setPracownik(Pracownik pracownik) {
-		this.pracownik = pracownik;
-	}
-
-
-
-
-
-
-
-
-	public List<Produkty> getProductSet() {
-		return productSet;
-	}
-
-
-
-
-
-
-
-
-	public void setProductSet(List<Produkty> productSet) {
-		this.productSet = productSet;
-	}
-
-
-
-
-
-
-
-
-	public User() {
+    public User() {
     }
 
     public Long getID() {
@@ -175,17 +98,4 @@ public class User {
     public void setUserRolesSet(Set<UserRoles> userRolesSet) {
         this.userRolesSet = userRolesSet;
     }
-
-
-
-
-	@Override
-	public String toString() {
-		return "User [ID=" + ID + ", imie=" + imie + ", nazwisko=" + nazwisko + ", email=" + email + ", plec=" + plec
-				+ ", haslo=" + haslo + ", pracownik=" + pracownik + ", userRolesSet=" + userRolesSet + ", productSet="
-				+ productSet + "]";
-	}
-    
-    
-    
 }

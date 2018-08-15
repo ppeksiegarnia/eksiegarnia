@@ -13,9 +13,6 @@ public class CheckAuth {
 	public CheckAuth(Model pmodel) {
 		model = pmodel;
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		model.addAttribute("nieznajomy",auth.getName());
-	
-		
 		Collection<? extends GrantedAuthority> all=auth.getAuthorities();
         GrantedAuthority admins=new SimpleGrantedAuthority("ADMIN_ROLE");
         GrantedAuthority pracownik=new SimpleGrantedAuthority("WORKER_ROLE");
